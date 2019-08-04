@@ -35,6 +35,9 @@ public class Block {
         this.back = back;
     }
 
+    public Block() {
+    }
+
 
     public int getWidth() {
         return width;

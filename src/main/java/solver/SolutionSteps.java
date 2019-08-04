@@ -6,8 +6,17 @@ import java.util.Objects;
 
 public class SolutionSteps {
     private List<String> steps = new ArrayList<>();
-    private int currentHash;
-    private Cube cube;
+
+    public String getDescriptor() {
+        return descriptor;
+    }
+
+    public void setDescriptor(String descriptor) {
+        this.descriptor = descriptor;
+    }
+
+    private String descriptor;
+
 
     public List<String> getSteps() {
         return steps;
@@ -17,43 +26,26 @@ public class SolutionSteps {
         this.steps = steps;
     }
 
-    public int getCurrentHash() {
-        return currentHash;
-    }
-
-    public void setCurrentHash(int currentHash) {
-        this.currentHash = currentHash;
-    }
-
-    public Cube getCube() {
-        return cube;
-    }
-
-    public void setCube(Cube cube) {
-        this.cube = cube;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SolutionSteps that = (SolutionSteps) o;
-        return currentHash == that.currentHash &&
-                Objects.equals(steps, that.steps) &&
-                Objects.equals(cube, that.cube);
+        return Objects.equals(steps, that.steps) &&
+                Objects.equals(descriptor, that.descriptor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(steps, currentHash, cube);
+        return Objects.hash(steps, descriptor);
     }
 
     @Override
     public String toString() {
         return "SolutionSteps{" +
                 "steps=" + steps +
-                ", currentHash=" + currentHash +
-                ", cube=" + cube +
+                ", descriptor='" + descriptor + '\'' +
                 '}';
     }
 }

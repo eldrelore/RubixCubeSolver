@@ -19,17 +19,19 @@ public class RubixCubeOneByBlockTest {
 
     @Test
     public void testCubeSize() {
-        Assert.assertEquals(SIZE, cube.getCube().length);
-        Assert.assertEquals(SIZE, cube.getCube()[0].length);
-        Assert.assertEquals(SIZE, cube.getCube()[0][0].length);
-        Assert.assertEquals(SIZE, cube.getCube()[0][0].length);
+        Block[][][] blocks = cube.initializeCube();
+        Assert.assertEquals(SIZE, blocks.length);
+        Assert.assertEquals(SIZE, blocks[0].length);
+        Assert.assertEquals(SIZE, blocks[0][0].length);
+        Assert.assertEquals(SIZE, blocks[0][0].length);
     }
 
     @Test
     public void testCubeFaces() {
-        /* TODO:  setup and test a rubixCube of size one,
+        /*  setup and test a rubixCube of size one,
             make sure it has all the right faces (and type)*/
-        Block block = cube.getCube()[0][0][0];
+        Block[][][] blocks = cube.initializeCube();
+        Block block = blocks[0][0][0];
         Assert.assertEquals(BlockType.DEFAULT, block.getType());
         Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
         Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
@@ -44,6 +46,5 @@ public class RubixCubeOneByBlockTest {
         SolutionSteps solutionSteps = cube.solve(null);
         Assert.assertEquals(1, solutionSteps.getSteps().size());
         Assert.assertEquals("", solutionSteps.getSteps().get(0));
-        Assert.assertEquals(cube, solutionSteps.getCube());
     }
 }

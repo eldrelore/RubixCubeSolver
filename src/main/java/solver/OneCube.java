@@ -14,11 +14,11 @@ public class OneCube implements Cube {
     private static Block[][][] cube;
 
     public OneCube() {
-        buildCube();
+        initializeCube();
     }
 
     @Override
-    public Cube buildCube() {
+    public Block[][][] initializeCube() {
         Block block = new Block(0, 0, 0,
                 BlockType.DEFAULT,
                 new BlockFace(FaceDirection.TOP, FaceColor.BLUE), new BlockFace(FaceDirection.BOTTOM, FaceColor.GREEN),
@@ -26,7 +26,12 @@ public class OneCube implements Cube {
                 new BlockFace(FaceDirection.FRONT, FaceColor.YELLOW), new BlockFace(FaceDirection.BACK, FaceColor.WHITE));
         cube = new Block[1][1][1];
         cube[0][0][0] = block;
-        return this;
+        return cube;
+    }
+
+    @Override
+    public Integer getSize() {
+        return null;
     }
 
 
@@ -37,59 +42,22 @@ public class OneCube implements Cube {
         return cube;
     }
 
-    @Override
-    public void rotateWidthForward(int middleCount) {
-
-    }
-
-    @Override
-    public void rotateWidthBackward(int middleCount) {
-
-    }
-
-    @Override
-    public void rotateHeightLeft(int middleCount) {
-
-    }
-
-    @Override
-    public void rotateHeightRight(int middleCount) {
-
-    }
-
-    @Override
-    public void rotateDepthClockwise(int middleCount) {
-
-    }
-
-    @Override
-    public void rotateDepthCounterClockwise(int middleCount) {
-
-    }
-
 
     @Override
     public SolutionSteps solve(Map<String, Cube> solutionStates) {
         /* one by one cube is always solved.  */
         SolutionSteps solutionSteps = new SolutionSteps();
         solutionSteps.getSteps().add("");
-        solutionSteps.setCube(this);
+
         return solutionSteps;
     }
 
     @Override
-    public Map<String, Cube> generateStates(int maxSteps) {
-        Map<String, Cube> stateMap = new HashMap<>();
-        stateMap.put("", this);
+    public Map<Integer, SolutionSteps> generateStates() {
+        Map<Integer, SolutionSteps> stateMap = new HashMap<>();
+        stateMap.put("".hashCode(), new SolutionSteps());
         return stateMap;
     }
 
-    @Override
-    public SolutionSteps getCurrentState() {
-        SolutionSteps solutionSteps = new SolutionSteps();
-        solutionSteps.setCube(this);
-        solutionSteps.setCurrentHash(this.hashCode());
-        solutionSteps.setSteps(new ArrayList<>());
-        return solutionSteps;
-    }
+
 }

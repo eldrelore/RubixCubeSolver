@@ -1,33 +1,32 @@
 package solver;
 
-import solver.types.BlockFace;
-import solver.types.BlockType;
-import solver.types.FaceColor;
-import solver.types.FaceDirection;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.FileUtils;
+import solver.model.CubeRotation;
+import solver.types.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+
+import java.nio.charset.Charset;
+
+import java.util.*;
+
 
 public class TwoCube implements Cube {
-
-    private static Block[][][] cube;
-
     public TwoCube() {
-        buildCube();
+
     }
 
     private static final Integer SIZE = 2;
     private static final Integer MAX_HEIGHT = SIZE - 1;
     private static final Integer MAX_WIDTH = SIZE - 1;
     private static final Integer MAX_DEPTH = SIZE - 1;
-    private static final Integer MIN_HEIGHT = 0;
-    private static final Integer MIN_WIDTH = 0;
-    private static final Integer MIN_DEPTH = 0;
+
 
     @Override
-    public Cube buildCube() {
-        cube = new Block[SIZE][SIZE][SIZE];
+    public Block[][][] initializeCube() {
+        Block[][][] cube = new Block[SIZE][SIZE][SIZE];
         List<Block> blocks = new ArrayList<>();
         Block bottomLeftFrontBlock = new Block(0, 0, 0,
                 BlockType.CORNER,
@@ -116,7 +115,23 @@ public class TwoCube implements Cube {
         for (Block block : blocks) {
             cube[block.getWidth()][block.getHeight()][block.getDepth()] = block;
         }
-        return this;
+        return cube;
+    }
+
+
+    public Block[][][] initializeCubeFromDescriptor(String descriptor) {
+        Block[][][] blockArray = new Block[getSize()][getSize()][getSize()];
+        try {
+            blockArray = MAPPER.readValue(descriptor, blockArray.getClass());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return blockArray;
+    }
+
+
+    public Integer getSize() {
+        return SIZE;
     }
 /* TODO:  implement general (probably abstract inside Cube)
     way to track states, current state,
@@ -127,243 +142,166 @@ public class TwoCube implements Cube {
         return null;
     }
 
-    @Override
-    public Map<String, Cube> generateStates(int maxSteps) {
-        return null;
-    }
 
     @Override
-    public SolutionSteps getCurrentState() {
-        return null;
-    }
-
-    @Override
-    public Block[][][] getCube() {
-        if (null == cube) {
-            throw new RuntimeException("Cube hasn't been set up yet");
+    public Map<Integer, SolutionSteps> generateStates() {
+        /**
+         * start with an initialized cube
+         *
+         * make each possible movement.
+         * If the state isn't present in stored states:
+         *      store in storedStates
+         *      Create a map of storedStates for this number of moves.  Include this in it.
+         *
+         *
+         */
+        /* remove all entries from src/test/resources */
+        try {
+            FileUtils.cleanDirectory(new File("src/test/resources"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return cube;
-    }
+        Map<Integer, SolutionSteps> storedStates = new HashMap<>();
+        int totalAttempts = 0;
+        int knownStates = 0;
+        Long startTime = System.currentTimeMillis();
+        Long movementStartTime = System.currentTimeMillis();
+        /* start with initialized cube for first set */
+        int numberOfMovements = 0;
+        Block[][][] initializeCube = initializeCube();
+        String currentFileName = getFileName(numberOfMovements);
+        CubeRotation initialCubeRotation = new CubeRotation(0, initializeCube, new ArrayList<String>());
+        SolutionSteps currentState = getCurrentState(initialCubeRotation);
+        storedStates.put(currentState.getDescriptor().hashCode(), currentState);
 
+        /* write output for this generation */
+        appendToFile(currentFileName, currentState);
 
-    /* No middles, all corners.  This should be extractable to a more generic way of rotating.
-    Haven't bothered (yet) to do the math or search for it.
-    I figure I'll get it working, and then see if it needs optimization.
-    */
-    @Override
-    public void rotateHeightLeft(int height) {
-        if (height > 0) {
-            /* Start from top left front*/
-            Block[][][] localCube = getCube();
-            /* create holder for  left top front and spin holder in place*/
-            Block tempBlock = localCube[MIN_WIDTH][height][MIN_DEPTH];
-            switchFaceLeft(tempBlock);
+        numberOfMovements++;
+        String priorFileName = getFileName(numberOfMovements - 1);
 
+        Long movementFinishedTime = System.currentTimeMillis();
+        boolean priorFileExists = new File(priorFileName).exists();
+        /* now read the prior counter for the initial values */
+        while (priorFileExists) {
+            currentFileName = getFileName(numberOfMovements);
 
-            /* left top front receives right top front ; rotate left top front block*/
-            localCube[MIN_WIDTH][height][MIN_DEPTH] = localCube[MAX_WIDTH][height][MIN_DEPTH];
-            switchFaceLeft(localCube[MIN_WIDTH][height][MIN_DEPTH]);
+            /* for each previously generated state, make every possible change to it.
+            Check to see if they're new states.  If they are, add them.
+            If not, don't.*/
+            priorFileName = getFileName(numberOfMovements - 1);
 
-            /* top right front receives right top back, rotate right top front block */
-            localCube[MAX_WIDTH][height][MIN_DEPTH] = localCube[MAX_WIDTH][height][MAX_DEPTH];
-            switchFaceLeft(localCube[MAX_WIDTH][height][MIN_DEPTH]);
+            /* read all the strings out of the prior file */
+            int currentMovementStates = 0;
+            try (BufferedReader br = new BufferedReader(new FileReader(priorFileName))) {
+                for (String line; (line = br.readLine()) != null; ) {
+                    SolutionSteps priorMovementState = MAPPER.readValue(line, SolutionSteps.class);
+                    List<String> priorMovementSteps = priorMovementState.getSteps();
+                    Block[][][] priorCubeState = initializeCubeFromDescriptor(priorMovementState.getDescriptor());
+                    for (Rotation rotation : Rotation.values()) {
+                        for (int i = 0; i < getSize(); i++) {
+                            /* create the cube array from the prior know state */
+                            Block[][][] rotatedCube = deepClone(priorCubeState);
+                            /* apply the rotation to it*/
+                            CubeRotation cubeRotation = new CubeRotation(i, rotatedCube, priorMovementSteps, this);
+                            /* TODO:  this does not seem to be getting applied */
+                            CubeRotation rotationResult = rotation.getFunction().apply(cubeRotation);
 
-            /* right top back receives left top back; rotate right top back block */
-            localCube[MAX_WIDTH][height][MAX_DEPTH] = localCube[MIN_WIDTH][height][MAX_DEPTH];
-            switchFaceLeft(localCube[MAX_WIDTH][height][MAX_DEPTH]);
+                            /* determine if this is a known state*/
+                            /* if it's a known state, don't save it */
+                            /* if it's not a known state, save it to both maps */
+                            String currentDescriptor = getDescriptor(rotationResult.getBlockArray());
+                            int currentDescriptorHashCode = currentDescriptor.hashCode();
+                            if (null == storedStates.get(currentDescriptorHashCode)) {
+                                SolutionSteps updatedState = getCurrentState(rotationResult);
+                                storedStates.put(currentDescriptorHashCode, updatedState);
 
-            /* right top back receives holder; already rotated*/
-            localCube[MIN_WIDTH][height][MAX_DEPTH] = tempBlock;
+                            /* TODO:  rather than saving to a list and putting in a map, append to a file, and put the file name in the map.
+                                don't read the whole file in at once,
+                                read each line,
+                                generate the new values for it,
+                                write all the solutions for the movements applied to it,
+                                then proceed to the next line.*/
+                                appendToFile(currentFileName, updatedState);
+                                currentMovementStates++;
+                                knownStates++;
+                            }
+                            totalAttempts++;
+                        }
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            movementFinishedTime = System.currentTimeMillis();
+            Long movementDuration = movementFinishedTime - movementStartTime;
+            movementStartTime = movementFinishedTime;
+            Long totalDuration = movementFinishedTime - startTime;
+            System.out.println("Movement: " + numberOfMovements + " states per movement: " + currentMovementStates + " known states: " + knownStates + " duration: " + movementDuration + " total states attempted: " + totalAttempts + " total duration: " + totalDuration);
+            numberOfMovements++;
+            priorFileExists = new File(currentFileName).exists();
         }
+        writeSolutionsToFile(storedStates, "TwoByTwoCubeSoltions_" + System.currentTimeMillis() + ".txt");
+        return storedStates;
     }
 
 
-    public void switchFaceLeft(Block block) {
-        /* change facing: front becomes left, right becomes front,  back becomes right, left becomes back */
-        BlockFace leftBlockFaceHolder = block.getLeft();
-        block.setLeft(block.getFront());
-        block.setFront(block.getRight());
-        block.setRight(block.getBack());
-        block.setBack(leftBlockFaceHolder);
+    private String getFileName(int movement) {
+        String testResources = "src/test/resources/";
+        String currentFileName = testResources + "solutionStep" + (movement) + ".txt";
+        return currentFileName;
     }
 
-    public void switchFaceRight(Block block) {
-        /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        BlockFace frontFaceHolder = block.getFront();
-        block.setFront(block.getLeft());
-        block.setLeft(block.getBack());
-        block.setBack(block.getRight());
-        block.setRight(frontFaceHolder);
-    }
-
-    @Override
-    public void rotateHeightRight(int height) {
-        if (height > 0) {
-            /* Start from right top front*/
-            Block[][][] localCube = getCube();
-            /* create holder for right top front and spin holder in place*/
-            Block tempBlock = localCube[MAX_WIDTH][height][MIN_DEPTH];
-            switchFaceRight(tempBlock);
-
-            /* right top front receives left top front ; rotate right top front block*/
-            localCube[MAX_WIDTH][height][MIN_DEPTH] = localCube[MIN_WIDTH][height][MIN_DEPTH];
-            switchFaceRight(localCube[MAX_WIDTH][height][MIN_DEPTH]);
-
-
-            /* left top front receives left top back, rotate left top front block */
-            localCube[MIN_WIDTH][height][MIN_DEPTH] = localCube[0][height][MAX_DEPTH];
-            switchFaceRight(localCube[MIN_WIDTH][height][MIN_DEPTH]);
-
-            /* left top back receives right top front; rotate left top back block */
-            localCube[MIN_WIDTH][height][MAX_DEPTH] = localCube[1][height][MAX_DEPTH];
-            switchFaceRight(localCube[MIN_WIDTH][height][MAX_DEPTH]);
-
-            /* right top back receives holder; already rotated*/
-            localCube[MAX_WIDTH][height][MAX_DEPTH] = tempBlock;
-        }
-    }
-
-
-    public void switchFaceForward(Block block) {
-        /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        BlockFace frontFaceHolder = block.getFront();
-        block.setFront(block.getTop());
-        block.setTop(block.getBack());
-        block.setBack(block.getBottom());
-        block.setBottom(frontFaceHolder);
-    }
-
-    @Override
-    public void rotateWidthForward(int width) {
-        if (width > 0) {
-            Block[][][] localCube = getCube();
-            /* create holder for right top front and spin holder in place*/
-            Block tempBlock = localCube[width][MAX_HEIGHT][MIN_DEPTH];
-            switchFaceForward(tempBlock);
-
-            /* right top front receives right top back ; rotate right top front block*/
-            localCube[width][MAX_HEIGHT][MIN_DEPTH] = localCube[width][MAX_HEIGHT][MAX_DEPTH];
-            switchFaceForward(localCube[width][MAX_HEIGHT][MIN_DEPTH]);
-
-
-            /* right top back receives right bottom back, rotate right top back block */
-            localCube[width][MAX_HEIGHT][MAX_DEPTH] = localCube[width][MIN_HEIGHT][MAX_DEPTH];
-            switchFaceForward(localCube[width][MAX_HEIGHT][MAX_DEPTH]);
-
-            /* right bottom back receives bottom right front; rotate right bottom  back block */
-            localCube[width][MIN_HEIGHT][MAX_DEPTH] = localCube[width][MIN_HEIGHT][MIN_DEPTH];
-            switchFaceForward(localCube[width][MIN_HEIGHT][MAX_DEPTH]);
-
-            /* right bottom front receives holder; already rotated*/
-            localCube[width][MIN_HEIGHT][MIN_DEPTH] = tempBlock;
+    private void appendToFile(String fileName, SolutionSteps currentState) {
+        Writer output = null;
+        try {
+            output = new BufferedWriter(new FileWriter(fileName, true));
+            output.append(MAPPER.writeValueAsString(currentState));
+            output.append(System.lineSeparator());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                output.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            output = null;
         }
     }
 
-    public void switchFaceBackwards(Block block) {
-        /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        BlockFace frontFaceHolder = block.getFront();
-        block.setFront(block.getBottom());
-        block.setBottom(block.getBack());
-        block.setBack(block.getTop());
-        block.setTop(frontFaceHolder);
-    }
-
-    @Override
-    public void rotateWidthBackward(int width) {
-        if (width > 0) {
-            Block[][][] localCube = getCube();
-            /* create holder for right top front and spin holder in place*/
-            Block tempBlock = localCube[width][MAX_HEIGHT][MIN_DEPTH];
-            switchFaceBackwards(tempBlock);
-
-            /* right top front receives right bottom front ; rotate right top front block*/
-            localCube[width][MAX_HEIGHT][MIN_DEPTH] = localCube[width][MIN_HEIGHT][MIN_DEPTH];
-            switchFaceBackwards(localCube[width][MAX_HEIGHT][MIN_DEPTH]);
-
-
-            /* right bottom front receives right bottom back, rotate right bottom front block */
-            localCube[width][MIN_HEIGHT][MIN_DEPTH] = localCube[width][MIN_HEIGHT][MAX_DEPTH];
-            switchFaceBackwards(localCube[width][MIN_HEIGHT][MIN_DEPTH]);
-
-            /* right bottom back receives right top back; rotate right bottom back block */
-            localCube[width][MIN_HEIGHT][MAX_DEPTH] = localCube[width][MAX_HEIGHT][MAX_DEPTH];
-            switchFaceBackwards(localCube[width][MIN_HEIGHT][MAX_DEPTH]);
-
-            /* right top back receives holder; already rotated*/
-            localCube[width][MAX_HEIGHT][MAX_DEPTH] = tempBlock;
+    public void writeSolutionsToFile(Map<Integer, SolutionSteps> storedStates, String filename) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String solutionString = mapper.writeValueAsString(storedStates);
+            File file = new File("src/test/resources/" + filename);
+            FileUtils.writeStringToFile(file, solutionString, Charset.forName("utf-8"));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
+    public Block[][][] deepClone(Block[][][] original) {
+        int size = getSize();
+        Block[][][] clone = new Block[size][size][size];
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                for (int z = 0; z < size; z++) {
+                    Block originalBlock = original[x][y][z];
+                    Block clonedBlock = new Block();
+                    FaceColor faceColor = originalBlock.getBack().getColor();
+                    FaceDirection faceDirection = originalBlock.getBack().getDirection();
 
-    public void switchFaceClockwise(Block block) {
-        /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        BlockFace topFaceHolder = block.getTop();
-        block.setTop(block.getLeft());
-        block.setLeft(block.getBottom());
-        block.setBottom(block.getRight());
-        block.setRight(topFaceHolder);
-    }
+                    clonedBlock.setBack(new BlockFace(faceDirection, faceColor));
+                    clone[x][y][z] = clonedBlock;
 
-
-    public void switchFaceCounterClockwise(Block block) {
-        /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        BlockFace topFaceHolder = block.getTop();
-        block.setTop(block.getRight());
-        block.setRight(block.getBottom());
-        block.setBottom(block.getLeft());
-        block.setLeft(topFaceHolder);
-    }
-
-
-    @Override
-    public void rotateDepthClockwise(int depth) {
-        if (depth > 0) {
-            Block[][][] localCube = getCube();
-            /* create holder for right top back and spin holder in place*/
-            Block tempBlock = localCube[MAX_WIDTH][MAX_HEIGHT][depth];
-            switchFaceClockwise(tempBlock);
-
-            /* right top back receives left top back ; rotate right top back block*/
-            localCube[MAX_WIDTH][MAX_HEIGHT][depth] = localCube[MIN_WIDTH][MAX_HEIGHT][depth];
-            switchFaceClockwise(localCube[MAX_WIDTH][MAX_HEIGHT][depth]);
-
-
-            /* left top back receives left bottom back, rotate left top back block */
-            localCube[MIN_WIDTH][MAX_HEIGHT][depth] = localCube[MIN_WIDTH][MIN_HEIGHT][depth];
-            switchFaceClockwise(localCube[MIN_WIDTH][MAX_HEIGHT][depth]);
-
-            /* left bottom back receives right bottom back; rotate left bottom back block */
-            localCube[MIN_WIDTH][MIN_HEIGHT][depth] = localCube[MAX_WIDTH][MIN_HEIGHT][depth];
-            switchFaceClockwise(localCube[MIN_WIDTH][MIN_HEIGHT][depth]);
-
-            /* right bottom back receives holder; already rotated*/
-            localCube[MAX_WIDTH][MIN_HEIGHT][depth] = tempBlock;
+                }
+            }
         }
-    }
-
-    @Override
-    public void rotateDepthCounterClockwise(int depth) {
-        if (depth > 0) {
-            Block[][][] localCube = getCube();
-            /* create holder for  right top back and spin holder in place*/
-            Block tempBlock = localCube[MAX_WIDTH][MAX_HEIGHT][depth];
-            switchFaceCounterClockwise(tempBlock);
-
-            /* right top front receives left top front ; rotate right top front block*/
-            localCube[MAX_WIDTH][MAX_HEIGHT][depth] = localCube[MAX_WIDTH][MIN_HEIGHT][depth];
-            switchFaceCounterClockwise(localCube[MAX_WIDTH][MAX_HEIGHT][depth]);
-
-
-            /* top left front receives right top back, rotate left top front block */
-            localCube[MAX_WIDTH][MIN_HEIGHT][depth] = localCube[MIN_WIDTH][MIN_HEIGHT][depth];
-            switchFaceCounterClockwise(localCube[MAX_WIDTH][MIN_HEIGHT][depth]);
-
-            /* right top back receives right top front; rotate right top back block */
-            localCube[MIN_WIDTH][MIN_HEIGHT][depth] = localCube[MIN_WIDTH][MAX_HEIGHT][depth];
-            switchFaceCounterClockwise(localCube[MIN_WIDTH][MIN_HEIGHT][depth]);
-
-            /* right top back receives holder; already rotated*/
-            localCube[MIN_WIDTH][MAX_HEIGHT][depth] = tempBlock;
-        }
+        return clone;
     }
 }

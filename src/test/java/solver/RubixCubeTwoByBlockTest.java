@@ -5,6 +5,12 @@ import org.junit.Before;
 import org.junit.Test;
 import solver.types.FaceColor;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static org.hamcrest.core.IsNot.not;
+
 public class RubixCubeTwoByBlockTest {
 
     private Cube cube;
@@ -18,21 +24,23 @@ public class RubixCubeTwoByBlockTest {
 
     @Test
     public void testCubeSize() {
-        Assert.assertEquals(SIZE, cube.getCube().length);
-        Assert.assertEquals(SIZE, cube.getCube()[0].length);
-        Assert.assertEquals(SIZE, cube.getCube()[1].length);
-        Assert.assertEquals(SIZE, cube.getCube()[0][0].length);
-        Assert.assertEquals(SIZE, cube.getCube()[0][1].length);
-        Assert.assertEquals(SIZE, cube.getCube()[1][0].length);
-        Assert.assertEquals(SIZE, cube.getCube()[1][1].length);
+        Block[][][] blocks = cube.initializeCube();
+        Assert.assertEquals(SIZE, blocks.length);
+        Assert.assertEquals(SIZE, blocks[0].length);
+        Assert.assertEquals(SIZE, blocks[1].length);
+        Assert.assertEquals(SIZE, blocks[0][0].length);
+        Assert.assertEquals(SIZE, blocks[0][1].length);
+        Assert.assertEquals(SIZE, blocks[1][0].length);
+        Assert.assertEquals(SIZE, blocks[1][1].length);
     }
 
     @Test
     public void testCubeSides() {
+        Block[][][] blocks = cube.initializeCube();
         for (int x = 0; x < SIZE; x++) {
             for (int y = 0; y < SIZE; y++) {
                 for (int z = 0; z < SIZE; z++) {
-                    Block block = cube.getCube()[x][y][z];
+                    Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
                         Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
                         Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
@@ -97,11 +105,13 @@ public class RubixCubeTwoByBlockTest {
 
     @Test
     public void testRotateTopLeft() {
-        cube.rotateHeightLeft(1);
+        Block[][][] blocks = cube.initializeCube();
+        List<String> steps = new ArrayList<>();
+        cube.rotateHeightLeft(1, blocks, steps);
         for (int x = 0; x < SIZE; x++) {
             for (int y = 0; y < SIZE; y++) {
                 for (int z = 0; z < SIZE; z++) {
-                    Block block = cube.getCube()[x][y][z];
+                    Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
                         Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
                         Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
@@ -168,12 +178,13 @@ public class RubixCubeTwoByBlockTest {
 
     @Test
     public void testRotateTopRight() {
-
-        cube.rotateHeightRight(1);
+        Block[][][] blocks = cube.initializeCube();
+        List<String> steps = new ArrayList<>();
+        cube.rotateHeightRight(1, blocks, steps);
         for (int x = 0; x < SIZE; x++) {
             for (int y = 0; y < SIZE; y++) {
                 for (int z = 0; z < SIZE; z++) {
-                    Block block = cube.getCube()[x][y][z];
+                    Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
                         Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
                         Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
@@ -240,11 +251,13 @@ public class RubixCubeTwoByBlockTest {
 
     @Test
     public void testRotateRightForward() {
-        cube.rotateWidthForward(1);
+        Block[][][] blocks = cube.initializeCube();
+        List<String> steps = new ArrayList<>();
+        cube.rotateWidthForward(1, blocks, steps);
         for (int x = 0; x < SIZE; x++) {
             for (int y = 0; y < SIZE; y++) {
                 for (int z = 0; z < SIZE; z++) {
-                    Block block = cube.getCube()[x][y][z];
+                    Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
                         Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
                         Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
@@ -310,11 +323,13 @@ public class RubixCubeTwoByBlockTest {
 
     @Test
     public void testRotateRightBackward() {
-        cube.rotateWidthBackward(1);
+        Block[][][] blocks = cube.initializeCube();
+        List<String> steps = new ArrayList<>();
+        cube.rotateWidthBackward(1, blocks, steps);
         for (int x = 0; x < SIZE; x++) {
             for (int y = 0; y < SIZE; y++) {
                 for (int z = 0; z < SIZE; z++) {
-                    Block block = cube.getCube()[x][y][z];
+                    Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
                         Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
                         Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
@@ -380,11 +395,13 @@ public class RubixCubeTwoByBlockTest {
 
     @Test
     public void testRotateBackClockwise() {
-        cube.rotateDepthClockwise(1);
+        Block[][][] blocks = cube.initializeCube();
+        List<String> steps = new ArrayList<>();
+        cube.rotateDepthClockwise(1, blocks, steps);
         for (int x = 0; x < SIZE; x++) {
             for (int y = 0; y < SIZE; y++) {
                 for (int z = 0; z < SIZE; z++) {
-                    Block block = cube.getCube()[x][y][z];
+                    Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
                         Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
                         Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
@@ -450,11 +467,13 @@ public class RubixCubeTwoByBlockTest {
 
     @Test
     public void testRotateBackCounterClockwise() {
-        cube.rotateDepthCounterClockwise(1);
+        Block[][][] blocks = cube.initializeCube();
+        List<String> steps = new ArrayList<>();
+        cube.rotateDepthCounterClockwise(1, blocks, steps);
         for (int x = 0; x < SIZE; x++) {
             for (int y = 0; y < SIZE; y++) {
                 for (int z = 0; z < SIZE; z++) {
-                    Block block = cube.getCube()[x][y][z];
+                    Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
                         Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
                         Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
@@ -515,6 +534,51 @@ public class RubixCubeTwoByBlockTest {
                     }
                 }
             }
+        }
+    }
+
+
+    @Test
+    public void testGetCurrentState() {
+        Block[][][] blocks = cube.initializeCube();
+        List<String> steps = new ArrayList<>();
+        cube.rotateDepthClockwise(1, blocks, steps);
+        cube.rotateHeightLeft(1, blocks, steps);
+        Assert.assertNotNull(steps);
+        Assert.assertEquals("clockwise 1", steps.get(0));
+        Assert.assertEquals("left 1", steps.get(1));
+    }
+
+
+    @Test
+    public void testInitializeCubeFromDescriptor() {
+        Block[][][] initializedBlockArray = cube.initializeCube();
+        String initializedCubeDescriptor = cube.getDescriptor(initializedBlockArray);
+        Block[][][] blockArrayFromDescriptor = ((TwoCube) cube).initializeCubeFromDescriptor(initializedCubeDescriptor);
+        Assert.assertNotNull(blockArrayFromDescriptor);
+        Assert.assertArrayEquals(initializedBlockArray, blockArrayFromDescriptor);
+    }
+
+    @Test
+    public void testClone() {
+        List<String> steps = new ArrayList<>();
+        Block[][][] clonedArray = ((TwoCube) cube).deepClone(cube.initializeCube());
+        cube.rotateWidthForward(1, clonedArray, steps);
+        Assert.assertThat(cube.initializeCube(), not(equals(clonedArray)));
+    }
+
+
+
+
+    @Test
+    public void testGenerateStates() {
+        Map<Integer, SolutionSteps> solutions = cube.generateStates();
+        Assert.assertNotNull(solutions);
+        for (Integer descriptorHash : solutions.keySet()) {
+            SolutionSteps steps = solutions.get(descriptorHash);
+            Assert.assertNotNull(steps);
+            /* TODO:  the last one should be empty*/
+            Assert.assertFalse(steps.getSteps().isEmpty());
         }
     }
 
