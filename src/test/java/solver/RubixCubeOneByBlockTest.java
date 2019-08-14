@@ -43,7 +43,7 @@ public class RubixCubeOneByBlockTest {
 
     @Test
     public void testSolution() {
-        SolutionSteps solutionSteps = cube.solve(null);
+        SolutionSteps solutionSteps = cube.solve("", "");
         Assert.assertEquals(1, solutionSteps.getSteps().size());
         Assert.assertEquals("", solutionSteps.getSteps().get(0));
     }

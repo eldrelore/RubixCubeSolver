@@ -1,0 +1,48 @@
+Movement: 1 states per movement: 6 known states: 6 duration: 133 total states attempted: 12 total duration: 133
+Movement: 2 states per movement: 27 known states: 33 duration: 179 total states attempted: 84 total duration: 312
+Movement: 3 states per movement: 120 known states: 153 duration: 711 total states attempted: 408 total duration: 1023
+Movement: 4 states per movement: 534 known states: 687 duration: 1948 total states attempted: 1848 total duration: 2971
+Movement: 5 states per movement: 2256 known states: 2943 duration: 7750 total states attempted: 8256 total duration: 10721
+Movement: 6 states per movement: 8969 known states: 11912 duration: 31091 total states attempted: 35328 total duration: 41812
+Movement: 7 states per movement: 33057 known states: 44969 duration: 110218 total states attempted: 142956 total duration: 152030
+Movement: 8 states per movement: 114143 known states: 159112 duration: 383802 total states attempted: 539640 total duration: 535832
+Movement: 9 states per movement: 360442 known states: 519554 duration: 1261362 total states attempted: 1909356 total duration: 1797194
+Movement: 10 states per movement: 930124 known states: 1449678 duration: 3183402 total states attempted: 6234660 total duration: 4980596
+
+
+Movement: 1 states per movement: 6 known states: 6 duration: 146 total states attempted: 12 total duration: 146
+Movement: 2 states per movement: 27 known states: 33 duration: 159 total states attempted: 84 total duration: 305
+Movement: 3 states per movement: 120 known states: 153 duration: 702 total states attempted: 408 total duration: 1007
+Movement: 4 states per movement: 534 known states: 687 duration: 2049 total states attempted: 1848 total duration: 3056
+Movement: 5 states per movement: 2256 known states: 2943 duration: 8004 total states attempted: 8256 total duration: 11060
+Movement: 6 states per movement: 8969 known states: 11912 duration: 35427 total states attempted: 35328 total duration: 46487
+
+
+
+Movement: 1 states per movement: 6 known states: 6 duration: 136 total states attempted: 12 total duration: 136
+Movement: 2 states per movement: 27 known states: 33 duration: 180 total states attempted: 84 total duration: 316
+Movement: 3 states per movement: 120 known states: 153 duration: 739 total states attempted: 408 total duration: 1055
+Movement: 4 states per movement: 534 known states: 687 duration: 1985 total states attempted: 1848 total duration: 3040
+Movement: 5 states per movement: 2256 known states: 2943 duration: 7943 total states attempted: 8256 total duration: 10983
+Movement: 6 states per movement: 8969 known states: 11912 duration: 30702 total states attempted: 35328 total duration: 41685
+Movement: 7 states per movement: 33057 known states: 44969 duration: 108973 total states attempted: 142956 total duration: 150658
+Movement: 8 states per movement: 114143 known states: 159112 duration: 375219 total states attempted: 539640 total duration: 525877
+Movement: 9 states per movement: 360442 known states: 519554 duration: 1453860 total states attempted: 1909356 total duration: 1979737
+Movement: 10 states per movement: 930124 known states: 1449678 duration: 3128454 total states attempted: 6234660 total duration: 5108191
+Movement: 11 states per movement: 1349363 known states: 2799041 duration: 4440683 total states attempted: 17396148 total duration: 9548874
+
+Movement: 1 states per movement: 6 known states: 6 duration: 216 total states attempted: 12 total duration: 216
+Movement: 2 states per movement: 27 known states: 33 duration: 89 total states attempted: 84 total duration: 305
+Movement: 3 states per movement: 120 known states: 153 duration: 174 total states attempted: 408 total duration: 479
+Movement: 4 states per movement: 534 known states: 687 duration: 494 total states attempted: 1848 total duration: 973
+Movement: 5 states per movement: 2256 known states: 2943 duration: 2454 total states attempted: 8256 total duration: 3427
+Movement: 6 states per movement: 8969 known states: 11912 duration: 6614 total states attempted: 35328 total duration: 10041
+Movement: 7 states per movement: 33057 known states: 44969 duration: 31903 total states attempted: 142956 total duration: 41944
+Movement: 8 states per movement: 114143 known states: 159112 duration: 86116 total states attempted: 539640 total duration: 128060
+Movement: 9 states per movement: 360442 known states: 519554 duration: 283993 total states attempted: 1909356 total duration: 412053
+Movement: 10 states per movement: 930124 known states: 1449678 duration: 805241 total states attempted: 6234660 total duration: 1217294
+Movement: 11 states per movement: 1349363 known states: 2799041 duration: 1233807 total states attempted: 17396148 total duration: 2451101
+Movement: 12 states per movement: 781440 known states: 3580481 duration: 846924 total states attempted: 33588504 total duration: 3298025
+Movement: 13 states per movement: 90268 known states: 3670749 duration: 239574 total states attempted: 42965784 total duration: 3537599
+Movement: 14 states per movement: 275 known states: 3671024 duration: 19049 total states attempted: 44049000 total duration: 3556648
+Movement: 15 states per movement: 0 known states: 3671024 duration: 73 total states attempted: 44052300 total duration: 3556721

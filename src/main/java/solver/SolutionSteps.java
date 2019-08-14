@@ -7,6 +7,16 @@ import java.util.Objects;
 public class SolutionSteps {
     private List<String> steps = new ArrayList<>();
 
+    public List<String> getSolutionSteps() {
+        return solutionSteps;
+    }
+
+    public void setSolutionSteps(List<String> solutionSteps) {
+        this.solutionSteps = solutionSteps;
+    }
+
+    private List<String> solutionSteps = new ArrayList<>();
+
     public String getDescriptor() {
         return descriptor;
     }
@@ -33,18 +43,20 @@ public class SolutionSteps {
         if (o == null || getClass() != o.getClass()) return false;
         SolutionSteps that = (SolutionSteps) o;
         return Objects.equals(steps, that.steps) &&
+                Objects.equals(solutionSteps, that.solutionSteps) &&
                 Objects.equals(descriptor, that.descriptor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(steps, descriptor);
+        return Objects.hash(steps, solutionSteps, descriptor);
     }
 
     @Override
     public String toString() {
         return "SolutionSteps{" +
                 "steps=" + steps +
+                ", solutionSteps=" + solutionSteps +
                 ", descriptor='" + descriptor + '\'' +
                 '}';
     }

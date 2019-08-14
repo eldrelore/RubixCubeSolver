@@ -1,48 +1,51 @@
 package solver.types;
 
+import solver.constants.CubeConstants;
 import solver.model.CubeRotation;
 
 import java.util.Random;
 import java.util.function.Function;
 
+import static solver.constants.CubeConstants.*;
+
 public enum Rotation {
 
-    FORWARD("forward", new Function<CubeRotation, CubeRotation>() {
+    FORWARD(FORWARD_COMMAND, BACKWARD_COMMAND, new Function<CubeRotation, CubeRotation>() {
         @Override
         public CubeRotation apply(CubeRotation cubeRotation) {
             cubeRotation.getCube().rotateWidthForward(cubeRotation.getScalar(), cubeRotation.getBlockArray(), cubeRotation.getSteps());
             return cubeRotation;
         }
     }),
-    BACKWARD("backward", new Function<CubeRotation, CubeRotation>() {
+    BACKWARD(BACKWARD_COMMAND, FORWARD_COMMAND, new Function<CubeRotation, CubeRotation>() {
         @Override
         public CubeRotation apply(CubeRotation cubeRotation) {
             cubeRotation.getCube().rotateWidthBackward(cubeRotation.getScalar(), cubeRotation.getBlockArray(), cubeRotation.getSteps());
             return cubeRotation;
         }
     }),
-    LEFT("left", new Function<CubeRotation, CubeRotation>() {
+    LEFT(LEFT_COMMAND, RIGHT_COMMAND, new Function<CubeRotation, CubeRotation>() {
         @Override
         public CubeRotation apply(CubeRotation cubeRotation) {
             cubeRotation.getCube().rotateHeightLeft(cubeRotation.getScalar(), cubeRotation.getBlockArray(), cubeRotation.getSteps());
             return cubeRotation;
         }
     }),
-    RIGHT("right", new Function<CubeRotation, CubeRotation>() {
+    RIGHT(RIGHT_COMMAND, LEFT_COMMAND, new Function<CubeRotation, CubeRotation>() {
         @Override
         public CubeRotation apply(CubeRotation cubeRotation) {
             cubeRotation.getCube().rotateHeightRight(cubeRotation.getScalar(), cubeRotation.getBlockArray(), cubeRotation.getSteps());
             return cubeRotation;
         }
     }),
-    CLOCKWISE("clockwise", new Function<CubeRotation, CubeRotation>() {
+    CLOCKWISE(CLOCKWISE_COMMAND, COUNTER_CLOCKWISE_COMMAND, new Function<CubeRotation, CubeRotation>() {
         @Override
         public CubeRotation apply(CubeRotation cubeRotation) {
             cubeRotation.getCube().rotateDepthClockwise(cubeRotation.getScalar(), cubeRotation.getBlockArray(), cubeRotation.getSteps());
             return cubeRotation;
         }
     }),
-    COUNTER_CLOCKWISE("counter-clockwise", new Function<CubeRotation, CubeRotation>() {
+    COUNTER_CLOCKWISE(COUNTER_CLOCKWISE_COMMAND, CLOCKWISE_COMMAND, new Function<CubeRotation, CubeRotation>() {
         @Override
         public CubeRotation apply(CubeRotation cubeRotation) {
             cubeRotation.getCube().rotateDepthCounterClockwise(cubeRotation.getScalar(), cubeRotation.getBlockArray(), cubeRotation.getSteps());
@@ -50,6 +53,16 @@ public enum Rotation {
         }
     }),
     ;
+
+    public String getReverse() {
+        return reverse;
+    }
+
+    private void setReverse(String reverse) {
+        this.reverse = reverse;
+    }
+
+    private String reverse;
 
     public String getName() {
         return name;
@@ -71,9 +84,10 @@ public enum Rotation {
 
     private Function<CubeRotation, CubeRotation> function;
 
-    Rotation(String name, Function<CubeRotation, CubeRotation> function) {
+    Rotation(String name, String reverse, Function<CubeRotation, CubeRotation> function) {
         setName(name);
         setFunction(function);
+        setReverse(reverse);
     }
 
     public String getDisplayString(int scalar) {

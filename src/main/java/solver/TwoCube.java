@@ -1,6 +1,7 @@
 package solver;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
 import solver.model.CubeRotation;
@@ -10,7 +11,11 @@ import java.io.*;
 
 import java.nio.charset.Charset;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 public class TwoCube implements Cube {
@@ -30,76 +35,76 @@ public class TwoCube implements Cube {
         List<Block> blocks = new ArrayList<>();
         Block bottomLeftFrontBlock = new Block(0, 0, 0,
                 BlockType.CORNER,
-                new BlockFace(FaceDirection.TOP, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.BOTTOM, FaceColor.GREEN),
-                new BlockFace(FaceDirection.LEFT, FaceColor.ORANGE),
-                new BlockFace(FaceDirection.RIGHT, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.FRONT, FaceColor.WHITE),
-                new BlockFace(FaceDirection.BACK, FaceColor.DEFAULT));
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.GREEN),
+                new BlockFace(FaceColor.ORANGE),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.WHITE),
+                new BlockFace(FaceColor.DEFAULT));
 
         Block bottomRightFrontBlock = new Block(1, 0, 0,
                 BlockType.CORNER,
-                new BlockFace(FaceDirection.TOP, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.BOTTOM, FaceColor.GREEN),
-                new BlockFace(FaceDirection.LEFT, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.RIGHT, FaceColor.RED),
-                new BlockFace(FaceDirection.FRONT, FaceColor.WHITE),
-                new BlockFace(FaceDirection.BACK, FaceColor.DEFAULT));
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.GREEN),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.RED),
+                new BlockFace(FaceColor.WHITE),
+                new BlockFace(FaceColor.DEFAULT));
 
         Block topLeftFrontBlock = new Block(0, 1, 0,
                 BlockType.CORNER,
-                new BlockFace(FaceDirection.TOP, FaceColor.BLUE),
-                new BlockFace(FaceDirection.BOTTOM, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.LEFT, FaceColor.ORANGE),
-                new BlockFace(FaceDirection.RIGHT, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.FRONT, FaceColor.WHITE),
-                new BlockFace(FaceDirection.BACK, FaceColor.DEFAULT));
+                new BlockFace(FaceColor.BLUE),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.ORANGE),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.WHITE),
+                new BlockFace(FaceColor.DEFAULT));
 
         Block topRightFrontBlock = new Block(1, 1, 0,
                 BlockType.CORNER,
-                new BlockFace(FaceDirection.TOP, FaceColor.BLUE),
-                new BlockFace(FaceDirection.BOTTOM, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.LEFT, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.RIGHT, FaceColor.RED),
-                new BlockFace(FaceDirection.FRONT, FaceColor.WHITE),
-                new BlockFace(FaceDirection.BACK, FaceColor.DEFAULT));
+                new BlockFace(FaceColor.BLUE),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.RED),
+                new BlockFace(FaceColor.WHITE),
+                new BlockFace(FaceColor.DEFAULT));
 
 
         Block bottomLeftBackBlock = new Block(0, 0, 1,
                 BlockType.CORNER,
-                new BlockFace(FaceDirection.TOP, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.BOTTOM, FaceColor.GREEN),
-                new BlockFace(FaceDirection.LEFT, FaceColor.ORANGE),
-                new BlockFace(FaceDirection.RIGHT, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.FRONT, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.BACK, FaceColor.YELLOW));
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.GREEN),
+                new BlockFace(FaceColor.ORANGE),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.YELLOW));
 
         Block bottomRightBackBlock = new Block(1, 0, 1,
                 BlockType.CORNER,
-                new BlockFace(FaceDirection.TOP, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.BOTTOM, FaceColor.GREEN),
-                new BlockFace(FaceDirection.LEFT, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.RIGHT, FaceColor.RED),
-                new BlockFace(FaceDirection.FRONT, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.BACK, FaceColor.YELLOW));
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.GREEN),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.RED),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.YELLOW));
 
         Block topLeftBackBlock = new Block(0, 1, 1,
                 BlockType.CORNER,
-                new BlockFace(FaceDirection.TOP, FaceColor.BLUE),
-                new BlockFace(FaceDirection.BOTTOM, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.LEFT, FaceColor.ORANGE),
-                new BlockFace(FaceDirection.RIGHT, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.FRONT, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.BACK, FaceColor.YELLOW));
+                new BlockFace(FaceColor.BLUE),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.ORANGE),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.YELLOW));
 
         Block topRightBackBlock = new Block(1, 1, 1,
                 BlockType.CORNER,
-                new BlockFace(FaceDirection.TOP, FaceColor.BLUE),
-                new BlockFace(FaceDirection.BOTTOM, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.LEFT, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.RIGHT, FaceColor.RED),
-                new BlockFace(FaceDirection.FRONT, FaceColor.DEFAULT),
-                new BlockFace(FaceDirection.BACK, FaceColor.YELLOW));
+                new BlockFace(FaceColor.BLUE),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.RED),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.YELLOW));
 
         blocks.add(bottomLeftFrontBlock);
         blocks.add(bottomRightFrontBlock);
@@ -133,18 +138,37 @@ public class TwoCube implements Cube {
     public Integer getSize() {
         return SIZE;
     }
-/* TODO:  implement general (probably abstract inside Cube)
-    way to track states, current state,
-    and to solve from states (find current state in states, and reverse the steps)*/
 
     @Override
-    public SolutionSteps solve(Map<String, Cube> solutionStates) {
-        return null;
+    public SolutionSteps solve(String solutionFileName, String descriptor) {
+        int hashCode = descriptor.hashCode();
+        /* TODO:  write a quick find hash in file, and retrieve that entry, rather than reading the entire solutions file in */
+        SolutionSteps solutionSteps = readSolutionsFromFile(solutionFileName, descriptor);
+        if (null != solutionSteps) {
+            /* reverse the steps, both order and commands */
+            List<String> reversedSteps = reverseSteps(solutionSteps.getSteps());
+            solutionSteps.setSolutionSteps(reversedSteps);
+        }
+
+        return solutionSteps;
+    }
+
+    public List<String> reverseSteps(List<String> stepsToReverse) {
+        List<String> reversedSteps = new ArrayList<>();
+        for (String step : stepsToReverse) {
+            String[] splitStep = step.split(" ");
+            String command = splitStep[0];
+            String dimension = splitStep[1];
+            String reversal = ReveralRotation.getReversalByCommand(command);
+            reversedSteps.add(reversal + " " + dimension);
+        }
+        Collections.reverse(reversedSteps);
+        return reversedSteps;
     }
 
 
     @Override
-    public Map<Integer, SolutionSteps> generateStates() {
+    public Map<Integer, SolutionSteps> generateStates(Integer max) {
         /**
          * start with an initialized cube
          *
@@ -162,12 +186,12 @@ public class TwoCube implements Cube {
             e.printStackTrace();
         }
         Map<Integer, SolutionSteps> storedStates = new HashMap<>();
-        int totalAttempts = 0;
-        int knownStates = 0;
+        AtomicInteger totalAttempts = new AtomicInteger();
+        AtomicInteger knownStates = new AtomicInteger();
         Long startTime = System.currentTimeMillis();
         Long movementStartTime = System.currentTimeMillis();
         /* start with initialized cube for first set */
-        int numberOfMovements = 0;
+        Integer numberOfMovements = 0;
         Block[][][] initializeCube = initializeCube();
         String currentFileName = getFileName(numberOfMovements);
         CubeRotation initialCubeRotation = new CubeRotation(0, initializeCube, new ArrayList<String>());
@@ -178,73 +202,100 @@ public class TwoCube implements Cube {
         appendToFile(currentFileName, currentState);
 
         numberOfMovements++;
-        String priorFileName = getFileName(numberOfMovements - 1);
+        if (null == max || numberOfMovements <= max) {
+            String priorFileName = getFileName(numberOfMovements - 1);
 
-        Long movementFinishedTime = System.currentTimeMillis();
-        boolean priorFileExists = new File(priorFileName).exists();
-        /* now read the prior counter for the initial values */
-        while (priorFileExists) {
-            currentFileName = getFileName(numberOfMovements);
+            Long movementFinishedTime = System.currentTimeMillis();
+            boolean priorFileExists = new File(priorFileName).exists();
+            /* now read the prior counter for the initial values */
+            while (priorFileExists && ((null == max) || numberOfMovements <= max)) {
+
+
+                currentFileName = getFileName(numberOfMovements);
 
             /* for each previously generated state, make every possible change to it.
             Check to see if they're new states.  If they are, add them.
             If not, don't.*/
-            priorFileName = getFileName(numberOfMovements - 1);
+                priorFileName = getFileName(numberOfMovements - 1);
 
-            /* read all the strings out of the prior file */
-            int currentMovementStates = 0;
-            try (BufferedReader br = new BufferedReader(new FileReader(priorFileName))) {
-                for (String line; (line = br.readLine()) != null; ) {
-                    SolutionSteps priorMovementState = MAPPER.readValue(line, SolutionSteps.class);
-                    List<String> priorMovementSteps = priorMovementState.getSteps();
-                    Block[][][] priorCubeState = initializeCubeFromDescriptor(priorMovementState.getDescriptor());
-                    for (Rotation rotation : Rotation.values()) {
-                        for (int i = 0; i < getSize(); i++) {
-                            /* create the cube array from the prior know state */
-                            Block[][][] rotatedCube = deepClone(priorCubeState);
-                            /* apply the rotation to it*/
-                            CubeRotation cubeRotation = new CubeRotation(i, rotatedCube, priorMovementSteps, this);
-                            /* TODO:  this does not seem to be getting applied */
-                            CubeRotation rotationResult = rotation.getFunction().apply(cubeRotation);
-
-                            /* determine if this is a known state*/
-                            /* if it's a known state, don't save it */
-                            /* if it's not a known state, save it to both maps */
-                            String currentDescriptor = getDescriptor(rotationResult.getBlockArray());
-                            int currentDescriptorHashCode = currentDescriptor.hashCode();
-                            if (null == storedStates.get(currentDescriptorHashCode)) {
-                                SolutionSteps updatedState = getCurrentState(rotationResult);
-                                storedStates.put(currentDescriptorHashCode, updatedState);
-
-                            /* TODO:  rather than saving to a list and putting in a map, append to a file, and put the file name in the map.
-                                don't read the whole file in at once,
-                                read each line,
-                                generate the new values for it,
-                                write all the solutions for the movements applied to it,
-                                then proceed to the next line.*/
-                                appendToFile(currentFileName, updatedState);
-                                currentMovementStates++;
-                                knownStates++;
-                            }
-                            totalAttempts++;
-                        }
+                /* read all the strings out of the prior file */
+                AtomicInteger currentMovementStates = new AtomicInteger();
+                try (BufferedReader br = new BufferedReader(new FileReader(priorFileName))) {
+                    for (String line; (line = br.readLine()) != null; ) {
+                        SolutionSteps priorMovementState = MAPPER.readValue(line, SolutionSteps.class);
+                        generateAllCubeRotationsFromState(priorMovementState, currentFileName, storedStates, totalAttempts, currentMovementStates, knownStates);
                     }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+                movementFinishedTime = System.currentTimeMillis();
+                Long movementDuration = movementFinishedTime - movementStartTime;
+                movementStartTime = movementFinishedTime;
+                Long totalDuration = movementFinishedTime - startTime;
+                System.out.println("Movement: " + numberOfMovements + " states per movement: " + currentMovementStates + " known states: " + knownStates + " duration: " + movementDuration + " total states attempted: " + totalAttempts + " total duration: " + totalDuration);
+                numberOfMovements++;
+                priorFileExists = new File(currentFileName).exists();
             }
-            movementFinishedTime = System.currentTimeMillis();
-            Long movementDuration = movementFinishedTime - movementStartTime;
-            movementStartTime = movementFinishedTime;
-            Long totalDuration = movementFinishedTime - startTime;
-            System.out.println("Movement: " + numberOfMovements + " states per movement: " + currentMovementStates + " known states: " + knownStates + " duration: " + movementDuration + " total states attempted: " + totalAttempts + " total duration: " + totalDuration);
-            numberOfMovements++;
-            priorFileExists = new File(currentFileName).exists();
+            writeSolutionsToFile(storedStates, "TwoByTwoCubeSolutions_" + System.currentTimeMillis() + ".txt");
         }
-        writeSolutionsToFile(storedStates, "TwoByTwoCubeSoltions_" + System.currentTimeMillis() + ".txt");
         return storedStates;
+    }
+
+    public List<SolutionSteps> readSolutionSteps(String fileName) {
+        List<SolutionSteps> solutionSteps = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            for (String line; (line = br.readLine()) != null; ) {
+                SolutionSteps priorMovementState = MAPPER.readValue(line, SolutionSteps.class);
+                solutionSteps.add(priorMovementState);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return solutionSteps;
+    }
+
+
+    public void generateAllCubeRotationsFromState(SolutionSteps priorMovementState, String currentFileName, Map<Integer, SolutionSteps> storedStates, AtomicInteger totalAttempts, AtomicInteger currentMovementStates, AtomicInteger knownStates) {
+        List<String> priorMovementSteps = priorMovementState.getSteps();
+        Block[][][] priorCubeState = initializeCubeFromDescriptor(priorMovementState.getDescriptor());
+        for (Rotation rotation : Rotation.values()) {
+            for (int i = 0; i < getSize(); i++) {
+                List<String> priorSteps = new ArrayList<>();
+                priorSteps.addAll(priorMovementSteps);
+                /* create the cube array from the prior know state */
+                /* TODO:  still problems in how the steps are working, and how the block clone is working */
+                CubeRotation rotationResult = cloneCubeApplyRotation(priorCubeState, priorSteps, i, rotation);
+
+                /* determine if this is a known state*/
+                /* if it's a known state, don't save it */
+                /* if it's not a known state, save it to both maps */
+                String currentDescriptor = getDescriptor(rotationResult.getBlockArray());
+                int currentDescriptorHashCode = currentDescriptor.hashCode();
+                if (null == storedStates.get(currentDescriptorHashCode)) {
+                    SolutionSteps updatedState = getCurrentState(rotationResult);
+                    storedStates.put(currentDescriptorHashCode, updatedState);
+                    appendToFile(currentFileName, updatedState);
+                    currentMovementStates.incrementAndGet();
+                    knownStates.incrementAndGet();
+                }
+                totalAttempts.incrementAndGet();
+            }
+        }
+    }
+
+
+    public CubeRotation cloneCubeApplyRotation(Block[][][] priorCubeState, List<String> priorSteps, int i, Rotation rotation) {
+        Block[][][] rotatedCube = deepClone(priorCubeState);
+        /* apply the rotation to it*/
+        CubeRotation cubeRotation = new CubeRotation(i, rotatedCube, priorSteps, this);
+
+        CubeRotation rotationResult = rotation.getFunction().apply(cubeRotation);
+        setBlockArrayWidthHeightDepth(rotationResult.getBlockArray());
+        return rotationResult;
     }
 
 
@@ -273,15 +324,33 @@ public class TwoCube implements Cube {
     }
 
     public void writeSolutionsToFile(Map<Integer, SolutionSteps> storedStates, String filename) {
-        ObjectMapper mapper = new ObjectMapper();
+        Writer output = null;
         try {
-            String solutionString = mapper.writeValueAsString(storedStates);
-            File file = new File("src/test/resources/" + filename);
-            FileUtils.writeStringToFile(file, solutionString, Charset.forName("utf-8"));
+            output = new BufferedWriter(new FileWriter("src/test/resources/" + filename, true));
+            for (Map.Entry<Integer, SolutionSteps> step : storedStates.entrySet()) {
+
+                if (null != step) {
+                    String stepValue = MAPPER.writeValueAsString(step);
+                    if (null != stepValue) {
+                        output.append(stepValue);
+                        output.append(System.lineSeparator());
+                    }
+                }
+
+            }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (null != output) {
+                    output.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            output = null;
         }
     }
 
@@ -293,15 +362,66 @@ public class TwoCube implements Cube {
                 for (int z = 0; z < size; z++) {
                     Block originalBlock = original[x][y][z];
                     Block clonedBlock = new Block();
-                    FaceColor faceColor = originalBlock.getBack().getColor();
-                    FaceDirection faceDirection = originalBlock.getBack().getDirection();
-
-                    clonedBlock.setBack(new BlockFace(faceDirection, faceColor));
+                    cloneBlock(originalBlock, clonedBlock);
+                    clonedBlock.setWidth(originalBlock.getWidth());
+                    clonedBlock.setHeight(originalBlock.getHeight());
+                    clonedBlock.setDepth(originalBlock.getDepth());
                     clone[x][y][z] = clonedBlock;
-
                 }
             }
         }
         return clone;
+    }
+
+    public void cloneBlock(Block originalBlock, Block clonedBlock) {
+        cloneBlockFace(originalBlock.getTop(), clonedBlock.getTop());
+        cloneBlockFace(originalBlock.getBottom(), clonedBlock.getBottom());
+        cloneBlockFace(originalBlock.getBack(), clonedBlock.getBack());
+        cloneBlockFace(originalBlock.getFront(), clonedBlock.getFront());
+        cloneBlockFace(originalBlock.getLeft(), clonedBlock.getLeft());
+        cloneBlockFace(originalBlock.getRight(), clonedBlock.getRight());
+        clonedBlock.setType(originalBlock.getType());
+    }
+
+    public void cloneBlockFace(BlockFace originalBlockFace, BlockFace clonedBlockFace) {
+        FaceColor color = originalBlockFace.getColor();
+        clonedBlockFace.setColor(color);
+
+    }
+
+    public String readFileContents(String filename) {
+        String content = "";
+        try {
+            byte[] encoded = Files.readAllBytes(Paths.get(filename));
+            content = new String(encoded, Charset.forName("utf-8"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return content;
+    }
+
+    private static final ObjectMapper MAPPER = new ObjectMapper();
+
+    public SolutionSteps readSolutionsFromFile(String filename, String descriptor) {
+        AtomicReference<SolutionSteps> steps = new AtomicReference<>(new SolutionSteps());
+        TypeReference<Map.Entry<Integer, SolutionSteps>> reference = new TypeReference<Map.Entry<Integer, SolutionSteps>>() {
+        };
+        File file = new File(filename);
+        int descriptorHash = descriptor.hashCode();
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                Map.Entry<Integer, SolutionSteps> entry = MAPPER.readValue(line, reference);
+                if (entry.getKey().equals(descriptorHash)) {
+                    steps.set(entry.getValue());
+                    break;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return steps.get();
     }
 }

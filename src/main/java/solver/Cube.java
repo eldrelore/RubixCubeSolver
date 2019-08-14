@@ -23,9 +23,9 @@ public interface Cube {
 
     Integer getSize();
 
-    SolutionSteps solve(Map<String, Cube> solutionStates);
+    SolutionSteps solve(String solutionFileName, String descriptor);
 
-    Map<Integer, SolutionSteps> generateStates();
+    Map<Integer, SolutionSteps> generateStates(Integer max);
 
     default void switchFaceForward(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
@@ -63,18 +63,22 @@ public interface Cube {
             /* right top front receives right top back ; rotate right top front block*/
             cube[width][maxDimension][MIN_DEPTH] = cube[width][maxDimension][maxDimension];
             switchFaceForward(cube[width][maxDimension][MIN_DEPTH]);
+//            setBlockWidthHeightDepth(cube[width][maxDimension][MIN_DEPTH], width, maxDimension, MIN_DEPTH);
 
 
             /* right top back receives right bottom back, rotate right top back block */
             cube[width][maxDimension][maxDimension] = cube[width][MIN_HEIGHT][maxDimension];
             switchFaceForward(cube[width][maxDimension][maxDimension]);
+//            setBlockWidthHeightDepth(cube[width][maxDimension][maxDimension], width, maxDimension, maxDimension);
 
             /* right bottom back receives bottom right front; rotate right bottom  back block */
             cube[width][MIN_HEIGHT][maxDimension] = cube[width][MIN_HEIGHT][MIN_DEPTH];
             switchFaceForward(cube[width][MIN_HEIGHT][maxDimension]);
+//            setBlockWidthHeightDepth(cube[width][MIN_HEIGHT][maxDimension], width, MIN_HEIGHT, maxDimension);
 
             /* right bottom front receives holder; already rotated*/
             cube[width][MIN_HEIGHT][MIN_DEPTH] = tempBlock;
+//            setBlockWidthHeightDepth(cube[width][MIN_HEIGHT][MIN_DEPTH], width, MIN_HEIGHT, MIN_DEPTH);
         } else {
             if (recordSteps) {
                 steps.add("fpf 0");
@@ -83,6 +87,26 @@ public interface Cube {
                 rotateWidthBackward(i, false, cube, steps);
             }
         }
+    }
+
+    default void setBlockArrayWidthHeightDepth(Block[][][] cube) {
+        int size = getSize();
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                for (int z = 0; z < size; z++) {
+                    Block block = cube[x][y][z];
+                    block.setWidth(x);
+                    block.setHeight(y);
+                    block.setDepth(z);
+                }
+            }
+        }
+    }
+
+    default void setBlockWidthHeightDepth(Block block, int width, int height, int depth) {
+        block.setWidth(width);
+        block.setHeight(height);
+        block.setDepth(depth);
     }
 
 
@@ -103,18 +127,24 @@ public interface Cube {
             /* right top front receives right bottom front ; rotate right top front block*/
             cube[width][maxDimension][MIN_DEPTH] = cube[width][MIN_HEIGHT][MIN_DEPTH];
             switchFaceBackwards(cube[width][maxDimension][MIN_DEPTH]);
+//            setBlockWidthHeightDepth(cube[width][maxDimension][MIN_DEPTH], width, maxDimension, MIN_DEPTH);
 
 
             /* right bottom front receives right bottom back, rotate right bottom front block */
             cube[width][MIN_HEIGHT][MIN_DEPTH] = cube[width][MIN_HEIGHT][maxDimension];
             switchFaceBackwards(cube[width][MIN_HEIGHT][MIN_DEPTH]);
+//            setBlockWidthHeightDepth(cube[width][MIN_HEIGHT][MIN_DEPTH], width, MIN_HEIGHT, MIN_DEPTH);
 
             /* right bottom back receives right top back; rotate right bottom back block */
             cube[width][MIN_HEIGHT][maxDimension] = cube[width][maxDimension][maxDimension];
             switchFaceBackwards(cube[width][MIN_HEIGHT][maxDimension]);
+//            setBlockWidthHeightDepth(cube[width][MIN_HEIGHT][maxDimension], width, MIN_HEIGHT, maxDimension);
+
 
             /* right top back receives holder; already rotated*/
             cube[width][maxDimension][maxDimension] = tempBlock;
+//            setBlockWidthHeightDepth(cube[width][maxDimension][maxDimension], width, maxDimension, maxDimension);
+
         } else {
             if (recordSteps) {
                 steps.add("bpf 0");
@@ -171,17 +201,21 @@ public interface Cube {
             /* left top front receives right top front ; rotate left top front block*/
             cube[MIN_WIDTH][height][MIN_DEPTH] = cube[getMaxDimension()][height][MIN_DEPTH];
             switchFaceLeft(cube[MIN_WIDTH][height][MIN_DEPTH]);
+//            setBlockWidthHeightDepth(cube[MIN_WIDTH][height][MIN_DEPTH], MIN_WIDTH, height, MIN_DEPTH);
 
             /* top right front receives right top back, rotate right top front block */
             cube[maxDimension][height][MIN_DEPTH] = cube[maxDimension][height][maxDimension];
             switchFaceLeft(cube[maxDimension][height][MIN_DEPTH]);
+//            setBlockWidthHeightDepth(cube[maxDimension][height][MIN_DEPTH], maxDimension, height, MIN_DEPTH);
 
             /* right top back receives left top back; rotate right top back block */
             cube[maxDimension][height][maxDimension] = cube[MIN_WIDTH][height][maxDimension];
             switchFaceLeft(cube[maxDimension][height][maxDimension]);
+//            setBlockWidthHeightDepth(cube[maxDimension][height][maxDimension], maxDimension, height, maxDimension);
 
             /* right top back receives holder; already rotated*/
             cube[MIN_WIDTH][height][maxDimension] = tempBlock;
+//            setBlockWidthHeightDepth(cube[MIN_WIDTH][height][maxDimension], MIN_WIDTH, height, maxDimension);
         } else {
             if (recordSteps) {
                 steps.add("lpf 0");
@@ -209,18 +243,22 @@ public interface Cube {
             /* right top front receives left top front ; rotate right top front block*/
             cube[maxDimension][height][MIN_DEPTH] = cube[MIN_WIDTH][height][MIN_DEPTH];
             switchFaceRight(cube[maxDimension][height][MIN_DEPTH]);
+//            setBlockWidthHeightDepth(cube[maxDimension][height][MIN_DEPTH], maxDimension, height, MIN_DEPTH);
 
 
             /* left top front receives left top back, rotate left top front block */
             cube[MIN_WIDTH][height][MIN_DEPTH] = cube[0][height][maxDimension];
             switchFaceRight(cube[MIN_WIDTH][height][MIN_DEPTH]);
+//            setBlockWidthHeightDepth(cube[MIN_WIDTH][height][MIN_DEPTH], MIN_WIDTH, height, MIN_DEPTH);
 
             /* left top back receives right top front; rotate left top back block */
             cube[MIN_WIDTH][height][maxDimension] = cube[1][height][maxDimension];
             switchFaceRight(cube[MIN_WIDTH][height][maxDimension]);
+//            setBlockWidthHeightDepth(cube[MIN_WIDTH][height][maxDimension], MIN_WIDTH, height, maxDimension);
 
             /* right top back receives holder; already rotated*/
             cube[maxDimension][height][maxDimension] = tempBlock;
+//            setBlockWidthHeightDepth(cube[maxDimension][height][maxDimension], maxDimension, height, maxDimension);
         } else {
             if (recordSteps) {
                 steps.add("rpf 0");
@@ -269,18 +307,23 @@ public interface Cube {
             /* right top back receives left top back ; rotate right top back block*/
             cube[maxDimension][maxDimension][depth] = cube[MIN_WIDTH][maxDimension][depth];
             switchFaceClockwise(cube[maxDimension][maxDimension][depth]);
+//            setBlockWidthHeightDepth(cube[maxDimension][maxDimension][depth], maxDimension, maxDimension, depth);
 
 
             /* left top back receives left bottom back, rotate left top back block */
             cube[MIN_WIDTH][maxDimension][depth] = cube[MIN_WIDTH][MIN_HEIGHT][depth];
             switchFaceClockwise(cube[MIN_WIDTH][maxDimension][depth]);
+//            setBlockWidthHeightDepth(cube[MIN_WIDTH][maxDimension][depth], MIN_WIDTH, maxDimension, depth);
 
             /* left bottom back receives right bottom back; rotate left bottom back block */
             cube[MIN_WIDTH][MIN_HEIGHT][depth] = cube[maxDimension][MIN_HEIGHT][depth];
             switchFaceClockwise(cube[MIN_WIDTH][MIN_HEIGHT][depth]);
+//            setBlockWidthHeightDepth(cube[MIN_WIDTH][MIN_HEIGHT][depth], MIN_WIDTH, MIN_HEIGHT, depth);
 
             /* right bottom back receives holder; already rotated*/
             cube[maxDimension][MIN_HEIGHT][depth] = tempBlock;
+//            setBlockWidthHeightDepth(cube[maxDimension][MIN_HEIGHT][depth], maxDimension, MIN_HEIGHT, depth);
+
         } else {
             if (recordSteps) {
                 steps.add("cpf 0");
@@ -298,7 +341,9 @@ public interface Cube {
 
     default void rotateDepthCounterClockwise(int depth, boolean recordSteps, Block[][][] cube, List<String> steps) {
         if (depth > 0) {
-            steps.add(Rotation.COUNTER_CLOCKWISE.getDisplayString(depth));
+            if (recordSteps) {
+                steps.add(Rotation.COUNTER_CLOCKWISE.getDisplayString(depth));
+            }
             int maxDimension = getMaxDimension();
             /* create holder for  right top back and spin holder in place*/
             Block tempBlock = cube[maxDimension][maxDimension][depth];
@@ -307,18 +352,23 @@ public interface Cube {
             /* right top front receives left top front ; rotate right top front block*/
             cube[maxDimension][maxDimension][depth] = cube[maxDimension][MIN_HEIGHT][depth];
             switchFaceCounterClockwise(cube[maxDimension][maxDimension][depth]);
+//            setBlockWidthHeightDepth(cube[maxDimension][maxDimension][depth], maxDimension, maxDimension, depth);
 
 
             /* top left front receives right top back, rotate left top front block */
             cube[maxDimension][MIN_HEIGHT][depth] = cube[MIN_WIDTH][MIN_HEIGHT][depth];
             switchFaceCounterClockwise(cube[maxDimension][MIN_HEIGHT][depth]);
+//            setBlockWidthHeightDepth(cube[maxDimension][MIN_HEIGHT][depth], maxDimension, MIN_HEIGHT, depth);
 
             /* right top back receives right top front; rotate right top back block */
             cube[MIN_WIDTH][MIN_HEIGHT][depth] = cube[MIN_WIDTH][maxDimension][depth];
             switchFaceCounterClockwise(cube[MIN_WIDTH][MIN_HEIGHT][depth]);
+//            setBlockWidthHeightDepth(cube[MIN_HEIGHT][MIN_HEIGHT][depth], MIN_HEIGHT, MIN_HEIGHT, depth);
 
             /* right top back receives holder; already rotated*/
             cube[MIN_WIDTH][maxDimension][depth] = tempBlock;
+//            setBlockWidthHeightDepth(cube[MIN_HEIGHT][maxDimension][depth], MIN_HEIGHT, maxDimension, depth);
+
         } else {
             if (recordSteps) {
                 steps.add("ccwpf 0");

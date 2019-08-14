@@ -20,12 +20,12 @@ public class ThreeCube implements Cube {
     }
 
     @Override
-    public SolutionSteps solve(Map<String, Cube> solutionStates) {
+    public SolutionSteps solve(String solutionFileName, String descriptor) {
         return null;
     }
 
     @Override
-    public Map<Integer, SolutionSteps> generateStates() {
+    public Map<Integer, SolutionSteps> generateStates(Integer max) {
         return null;
     }
 

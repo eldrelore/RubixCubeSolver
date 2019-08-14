@@ -2,7 +2,6 @@ package solver;
 
 import solver.types.BlockFace;
 import solver.types.BlockType;
-import solver.types.FaceDirection;
 
 import java.util.Objects;
 
@@ -11,12 +10,12 @@ public class Block {
     private int height;
     private int depth;
     private BlockType type;
-    private BlockFace top = new BlockFace(FaceDirection.TOP);
-    private BlockFace bottom = new BlockFace(FaceDirection.BOTTOM);
-    private BlockFace left = new BlockFace(FaceDirection.LEFT);
-    private BlockFace right = new BlockFace(FaceDirection.RIGHT);
-    private BlockFace front = new BlockFace(FaceDirection.FRONT);
-    private BlockFace back = new BlockFace(FaceDirection.BACK);
+    private BlockFace top = new BlockFace();
+    private BlockFace bottom = new BlockFace();
+    private BlockFace left = new BlockFace();
+    private BlockFace right = new BlockFace();
+    private BlockFace front = new BlockFace();
+    private BlockFace back = new BlockFace();
 
     public Block(int currentWidth, int currentHeight, int currentDepth,
                  BlockType blockType,

@@ -3,9 +3,7 @@ package solver;
 import solver.types.FaceColor;
 import solver.types.BlockFace;
 import solver.types.BlockType;
-import solver.types.FaceDirection;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,9 +19,9 @@ public class OneCube implements Cube {
     public Block[][][] initializeCube() {
         Block block = new Block(0, 0, 0,
                 BlockType.DEFAULT,
-                new BlockFace(FaceDirection.TOP, FaceColor.BLUE), new BlockFace(FaceDirection.BOTTOM, FaceColor.GREEN),
-                new BlockFace(FaceDirection.LEFT, FaceColor.ORANGE), new BlockFace(FaceDirection.RIGHT, FaceColor.RED),
-                new BlockFace(FaceDirection.FRONT, FaceColor.YELLOW), new BlockFace(FaceDirection.BACK, FaceColor.WHITE));
+                new BlockFace(FaceColor.BLUE), new BlockFace(FaceColor.GREEN),
+                new BlockFace(FaceColor.ORANGE), new BlockFace(FaceColor.RED),
+                new BlockFace(FaceColor.YELLOW), new BlockFace(FaceColor.WHITE));
         cube = new Block[1][1][1];
         cube[0][0][0] = block;
         return cube;
@@ -44,7 +42,7 @@ public class OneCube implements Cube {
 
 
     @Override
-    public SolutionSteps solve(Map<String, Cube> solutionStates) {
+    public SolutionSteps solve(String solutionFileName, String descriptor) {
         /* one by one cube is always solved.  */
         SolutionSteps solutionSteps = new SolutionSteps();
         solutionSteps.getSteps().add("");
@@ -53,7 +51,7 @@ public class OneCube implements Cube {
     }
 
     @Override
-    public Map<Integer, SolutionSteps> generateStates() {
+    public Map<Integer, SolutionSteps> generateStates(Integer max) {
         Map<Integer, SolutionSteps> stateMap = new HashMap<>();
         stateMap.put("".hashCode(), new SolutionSteps());
         return stateMap;

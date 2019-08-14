@@ -3,29 +3,17 @@ package solver.types;
 import java.util.Objects;
 
 public class BlockFace {
-    private FaceDirection direction;
     private FaceColor color;
 
     public BlockFace() {
 
     }
 
-    public BlockFace(FaceDirection direction) {
-        this.direction = direction;
-    }
 
-    public BlockFace(FaceDirection direction, FaceColor color) {
-        this.direction = direction;
+    public BlockFace(FaceColor color) {
         this.color = color;
     }
 
-    public FaceDirection getDirection() {
-        return direction;
-    }
-
-    public void setDirection(FaceDirection direction) {
-        this.direction = direction;
-    }
 
     public FaceColor getColor() {
         return color;
@@ -40,19 +28,17 @@ public class BlockFace {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BlockFace blockFace = (BlockFace) o;
-        return direction == blockFace.direction &&
-                color == blockFace.color;
+        return color == blockFace.color;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(direction, color);
+        return Objects.hash(color);
     }
 
     @Override
     public String toString() {
         return "BlockFace{" +
-                "direction=" + direction +
                 ", color=" + color +
                 '}';
     }
