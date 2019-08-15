@@ -1028,7 +1028,7 @@ public class RubixCubeTwoByBlockTest {
     }
 
 
-    @Test
+    //@Test
     public void testGenerateStates() {
         Map<Integer, SolutionSteps> solutions = cube.generateStates(null);
         Assert.assertNotNull(solutions);
@@ -1038,7 +1038,6 @@ public class RubixCubeTwoByBlockTest {
         for (Integer descriptorHash : solutions.keySet()) {
             SolutionSteps steps = solutions.get(descriptorHash);
             Assert.assertNotNull(steps);
-            /* TODO:  the last one should be empty*/
             if (steps.getSteps().isEmpty()) {
                 trueCounter++;
             }
@@ -1057,28 +1056,30 @@ public class RubixCubeTwoByBlockTest {
         steps.add(ReveralRotation.RIGHT.getCommand() + " 1");
         steps.add(ReveralRotation.CLOCKWISE.getCommand() + " 1");
         steps.add(ReveralRotation.COUNTER_CLOCKWISE.getCommand() + " 1");
-        steps.add(ReveralRotation.FORWARD_PRESERVE.getCommand() + " 1");
-        steps.add(ReveralRotation.BACKWARD_PRESRVE.getCommand() + " 1");
-        steps.add(ReveralRotation.LEFT_PRESERVE.getCommand() + " 1");
-        steps.add(ReveralRotation.RIGHT_PRESERVE.getCommand() + " 1");
-        steps.add(ReveralRotation.CLOCKWISE_PRESERVE.getCommand() + " 1");
-        steps.add(ReveralRotation.COUNTER_CLOCKWISE_PRESERVE.getCommand() + " 1");
+        steps.add(ReveralRotation.FORWARD_PRESERVE.getCommand() + " 0");
+        steps.add(ReveralRotation.BACKWARD_PRESRVE.getCommand() + " 0");
+        steps.add(ReveralRotation.LEFT_PRESERVE.getCommand() + " 0");
+        steps.add(ReveralRotation.RIGHT_PRESERVE.getCommand() + " 0");
+        steps.add(ReveralRotation.CLOCKWISE_PRESERVE.getCommand() + " 0");
+        steps.add(ReveralRotation.COUNTER_CLOCKWISE_PRESERVE.getCommand() + " 0");
 
         List<String> reversedSteps = ((TwoCube) cube).reverseSteps(steps);
         Assert.assertNotNull(reversedSteps);
         Assert.assertEquals(steps.size(), reversedSteps.size());
-        Assert.assertEquals(reversedSteps.get(0), ReveralRotation.CLOCKWISE_PRESERVE.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(1), ReveralRotation.COUNTER_CLOCKWISE_PRESERVE.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(2), ReveralRotation.LEFT_PRESERVE.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(3), ReveralRotation.RIGHT_PRESERVE.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(4), ReveralRotation.FORWARD_PRESERVE.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(5), ReveralRotation.BACKWARD_PRESRVE.getCommand() + " 1");
+        Assert.assertEquals(reversedSteps.get(0), ReveralRotation.COUNTER_CLOCKWISE.getCommand() + " 1");
+        Assert.assertEquals(reversedSteps.get(1), ReveralRotation.CLOCKWISE.getCommand() + " 1");
+        Assert.assertEquals(reversedSteps.get(2), ReveralRotation.RIGHT.getCommand() + " 1");
+        Assert.assertEquals(reversedSteps.get(3), ReveralRotation.LEFT.getCommand() + " 1");
+        Assert.assertEquals(reversedSteps.get(4), ReveralRotation.BACKWARD.getCommand() + " 1");
+        Assert.assertEquals(reversedSteps.get(5), ReveralRotation.FORWARD.getCommand() + " 1");
+
         Assert.assertEquals(reversedSteps.get(6), ReveralRotation.CLOCKWISE.getCommand() + " 1");
         Assert.assertEquals(reversedSteps.get(7), ReveralRotation.COUNTER_CLOCKWISE.getCommand() + " 1");
         Assert.assertEquals(reversedSteps.get(8), ReveralRotation.LEFT.getCommand() + " 1");
         Assert.assertEquals(reversedSteps.get(9), ReveralRotation.RIGHT.getCommand() + " 1");
         Assert.assertEquals(reversedSteps.get(10), ReveralRotation.FORWARD.getCommand() + " 1");
         Assert.assertEquals(reversedSteps.get(11), ReveralRotation.BACKWARD.getCommand() + " 1");
+
         Assert.assertEquals(reversedSteps.get(12), "test 1");
     }
 
@@ -1114,7 +1115,7 @@ public class RubixCubeTwoByBlockTest {
 
     @Test
     public void testReadFileContents() {
-        String solutionFile = "src/main/resources/TwoByTwoCubeSolutions.txt";
+        String solutionFile = "src/test/TestSolution.txt";
         String fileContents = ((TwoCube) cube).readFileContents(solutionFile);
         Assert.assertNotNull(fileContents);
         Assert.assertFalse(fileContents.isEmpty());
@@ -1214,66 +1215,66 @@ public class RubixCubeTwoByBlockTest {
         Block bottomRightFrontBlock = new Block(1, 0, 0,
                 BlockType.CORNER,
                 new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.ORANGE),
+                new BlockFace(FaceColor.WHITE),
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.BLUE),
-                new BlockFace(FaceColor.YELLOW),
+                new BlockFace(FaceColor.ORANGE),
                 new BlockFace(FaceColor.DEFAULT));
-        
+
         Block topLeftFrontBlock = new Block(0, 1, 0,
                 BlockType.CORNER,
+                new BlockFace(FaceColor.WHITE),
+                new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.RED),
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.BLUE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.WHITE),
                 new BlockFace(FaceColor.DEFAULT));
 
         Block topRightFrontBlock = new Block(1, 1, 0,
                 BlockType.CORNER,
+                new BlockFace(FaceColor.BLUE),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.YELLOW),
                 new BlockFace(FaceColor.RED),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.GREEN),
-                new BlockFace(FaceColor.WHITE),
                 new BlockFace(FaceColor.DEFAULT));
 
 
         Block bottomLeftBackBlock = new Block(0, 0, 1,
                 BlockType.CORNER,
                 new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.GREEN),
                 new BlockFace(FaceColor.YELLOW),
+                new BlockFace(FaceColor.GREEN),
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.RED));
+                new BlockFace(FaceColor.ORANGE));
 
         Block bottomRightBackBlock = new Block(1, 0, 1,
                 BlockType.CORNER,
                 new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.GREEN),
-                new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.YELLOW),
+                new BlockFace(FaceColor.DEFAULT),
+                new BlockFace(FaceColor.BLUE),
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.ORANGE));
 
         Block topLeftBackBlock = new Block(0, 1, 1,
                 BlockType.CORNER,
-                new BlockFace(FaceColor.ORANGE),
+                new BlockFace(FaceColor.YELLOW),
                 new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.BLUE),
+                new BlockFace(FaceColor.GREEN),
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.WHITE));
+                new BlockFace(FaceColor.RED));
 
         Block topRightBackBlock = new Block(1, 1, 1,
                 BlockType.CORNER,
-                new BlockFace(FaceColor.BLUE),
+                new BlockFace(FaceColor.WHITE),
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.RED),
+                new BlockFace(FaceColor.GREEN),
                 new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.YELLOW));
+                new BlockFace(FaceColor.RED));
 
         blocks.add(bottomLeftFrontBlock);
         blocks.add(bottomRightFrontBlock);
@@ -1299,5 +1300,142 @@ public class RubixCubeTwoByBlockTest {
             storedStates.put(step.getDescriptor().hashCode(), step);
         }
         ((TwoCube) cube).writeSolutionsToFile(storedStates, "testSolutions.txt");
+    }
+
+    @Test
+    public void testCorrectCommandNoPreservation() {
+        String command = "left";
+        String dimension = "1";
+        String updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("left 1", updatedCommand);
+
+        command = "left";
+        dimension = "0";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("left 0", updatedCommand);
+
+        command = "right";
+        dimension = "0";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("right 0", updatedCommand);
+
+        command = "right";
+        dimension = "1";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("right 1", updatedCommand);
+
+        command = "forward";
+        dimension = "0";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("forward 0", updatedCommand);
+
+        command = "forward";
+        dimension = "1";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("forward 1", updatedCommand);
+
+        command = "backward";
+        dimension = "1";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("backward 1", updatedCommand);
+
+        command = "backward";
+        dimension = "0";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("backward 0", updatedCommand);
+
+        command = "clockwise";
+        dimension = "1";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("clockwise 1", updatedCommand);
+
+        command = "clockwise";
+        dimension = "0";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("clockwise 0", updatedCommand);
+
+        command = "counter-clockwise";
+        dimension = "0";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("counter-clockwise 0", updatedCommand);
+
+        command = "counter-clockwise";
+        dimension = "1";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("counter-clockwise 1", updatedCommand);
+
+    }
+
+    @Test
+    public void correctCommandPreseration() {
+        String command = "fpf";
+        String dimension = "0";
+        String updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("backward 1", updatedCommand);
+
+
+        command = "bpf";
+        dimension = "0";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("forward 1", updatedCommand);
+
+        command = "lpf";
+        dimension = "0";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("right 1", updatedCommand);
+
+        command = "rpf";
+        dimension = "0";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("left 1", updatedCommand);
+
+        command = "cpf";
+        dimension = "0";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("counter-clockwise 1", updatedCommand);
+
+        command = "ccwpf";
+        dimension = "0";
+        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
+        Assert.assertEquals("clockwise 1", updatedCommand);
+    }
+
+    @Test
+    public void testInversePreservationRotation() {
+        Assert.assertEquals("backward", PreserveRotation.getInverseByCommand("fpf"));
+        Assert.assertEquals("forward", PreserveRotation.getInverseByCommand("bpf"));
+
+        Assert.assertEquals("left", PreserveRotation.getInverseByCommand("rpf"));
+        Assert.assertEquals("right", PreserveRotation.getInverseByCommand("lpf"));
+
+        Assert.assertEquals("counter-clockwise", PreserveRotation.getInverseByCommand("cpf"));
+        Assert.assertEquals("clockwise", PreserveRotation.getInverseByCommand("ccwpf"));
+    }
+
+    @Test
+    public void testReverseSteps() {
+        List<String> steps = Arrays.asList("backward 1", "right 1", "counter-clockwise 1", "backward 1", "left 1", "counter-clockwise 1",
+                "counter-clockwise 1", "left 1", "clockwise 1", "right 1");
+        List<String> expectedReversedSteps = Arrays.asList("left 1", "counter-clockwise 1", "right 1", "clockwise 1", "clockwise 1", "right 1", "forward 1", "clockwise 1", "left 1", "forward 1");
+        List<String> reversedSteps = ((TwoCube) cube).reverseSteps(steps);
+        Assert.assertEquals(expectedReversedSteps, reversedSteps);
+    }
+
+    @Test
+    public void testReversePreserveSteps() {
+        List<String> steps = Arrays.asList("fpf 0", "rpf 0", "cpf 0", "fpf 0", "rpf 0", "cpf 0",
+                "cpf 0", "rpf 0", "ccwpf 0", "lpf 0");
+        List<String> expectedReversedSteps = Arrays.asList("left 1", "counter-clockwise 1", "right 1", "clockwise 1",
+                "clockwise 1", "right 1", "forward 1", "clockwise 1", "right 1", "forward 1");
+        List<String> reversedSteps = ((TwoCube) cube).reverseSteps(steps);
+        Assert.assertEquals(expectedReversedSteps, reversedSteps);
+    }
+
+    @Test
+    public void testReverseSinglePreserveSteps() {
+        List<String> steps = Arrays.asList("rpf 0");
+        List<String> expectedReversedSteps = Arrays.asList("right 1");
+        List<String> reversedSteps = ((TwoCube) cube).reverseSteps(steps);
+        Assert.assertEquals(expectedReversedSteps, reversedSteps);
     }
 }

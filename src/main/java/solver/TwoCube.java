@@ -147,10 +147,25 @@ public class TwoCube implements Cube {
         if (null != solutionSteps) {
             /* reverse the steps, both order and commands */
             List<String> reversedSteps = reverseSteps(solutionSteps.getSteps());
+            List<String> generationSteps = solutionSteps.getSteps();
+            List<String> correctedGenerationSteps = correctGenerationSteps(generationSteps);
+            solutionSteps.setSteps(correctedGenerationSteps);
             solutionSteps.setSolutionSteps(reversedSteps);
         }
 
         return solutionSteps;
+    }
+
+    public List<String> correctGenerationSteps(List<String> generationSteps) {
+        List<String> correctedGenerationSteps = new ArrayList<>();
+        for (String generationStep : generationSteps) {
+            String[] splitStep = generationStep.split(" ");
+            String command = splitStep[0];
+            String dimension = splitStep[1];
+            String updatedCommand = correctPreserveCommand(command, dimension);
+            correctedGenerationSteps.add(updatedCommand);
+        }
+        return correctedGenerationSteps;
     }
 
     public List<String> reverseSteps(List<String> stepsToReverse) {
@@ -159,11 +174,29 @@ public class TwoCube implements Cube {
             String[] splitStep = step.split(" ");
             String command = splitStep[0];
             String dimension = splitStep[1];
-            String reversal = ReveralRotation.getReversalByCommand(command);
-            reversedSteps.add(reversal + " " + dimension);
+            command = ReveralRotation.getReversalByCommand(command);
+            if ("0".equals(dimension)) {
+                String updatedCommand = correctPreserveCommand(command, dimension);
+                reversedSteps.add(updatedCommand);
+            } else {
+                reversedSteps.add(command + " " + dimension);
+            }
+
         }
         Collections.reverse(reversedSteps);
         return reversedSteps;
+    }
+
+    public String correctPreserveCommand(String command, String dimension) {
+        String result = command + " " + dimension;
+        if ("0".equals(dimension)) {
+            String reversal = PreserveRotation.getInverseByCommand(command);
+            if (null != reversal) {
+                dimension = "1";
+                result = reversal + " " + dimension;
+            }
+        }
+        return result;
     }
 
 
