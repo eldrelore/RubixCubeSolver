@@ -1093,6 +1093,10 @@ public class RubixCubeTwoByBlockTest {
         List<String> generationSteps = solution.getSteps();
         Assert.assertNotNull(generationSteps);
         Assert.assertFalse(generationSteps.isEmpty());
+        List<String> expectedGenerationsteps = Arrays.asList("forward 1", "counter-clockwise 1", "backward 1", "right 1",
+                "counter-clockwise 1", "forward 1", "right 1", "forward 1", "counter-clockwise 1", "backward 1", "backward 1",
+                "counter-clockwise 1");
+        Assert.assertEquals(expectedGenerationsteps, generationSteps);
 
         List<String> solutionSteps = solution.getSolutionSteps();
         Assert.assertNotNull(solutionSteps);
@@ -1100,7 +1104,7 @@ public class RubixCubeTwoByBlockTest {
 
         System.out.println("Generation Steps: " + generationSteps);
         System.out.println("Solution steps: " + solutionSteps);
-        List<String> expectedSolutionSteps = Arrays.asList("rpf 0", "backward 1", "ccwpf 0", "rpf 0", "backward 1", "ccwpf 0", "backward 1", "right 1", "backward 1", "counter-clockwise 1");
+        List<String> expectedSolutionSteps = Arrays.asList("clockwise 1", "forward 1", "forward 1", "clockwise 1", "backward 1", "left 1", "backward 1", "clockwise 1", "left 1", "forward 1", "clockwise 1", "backward 1");
         Assert.assertEquals(expectedSolutionSteps, solutionSteps);
     }
 
