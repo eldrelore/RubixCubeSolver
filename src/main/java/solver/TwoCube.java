@@ -207,7 +207,7 @@ public class TwoCube implements Cube {
          */
         /* remove all entries from src/test/resources */
         try {
-            FileUtils.cleanDirectory(new File("src/test/resources"));
+            FileUtils.cleanDirectory(new File("src/test/resources/working"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -326,7 +326,11 @@ public class TwoCube implements Cube {
 
 
     private String getFileName(int movement) {
-        String testResources = "src/test/resources/";
+        String testResources = "src/test/resources/working/";
+        File directory = new File(testResources);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
         String currentFileName = testResources + "solutionStep" + (movement) + ".txt";
         return currentFileName;
     }
@@ -352,7 +356,7 @@ public class TwoCube implements Cube {
     public void writeSolutionsToFile(Map<Integer, SolutionSteps> storedStates, String filename) {
         Writer output = null;
         try {
-            output = new BufferedWriter(new FileWriter("src/test/resources/" + filename, true));
+            output = new BufferedWriter(new FileWriter("src/test/resources/working/" + filename, true));
             for (Map.Entry<Integer, SolutionSteps> step : storedStates.entrySet()) {
 
                 if (null != step) {
