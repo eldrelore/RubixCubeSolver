@@ -189,13 +189,6 @@ public class TwoCube implements Cube {
 
     public String correctPreserveCommand(String command, String dimension) {
         String result = command + " " + dimension;
-        if ("0".equals(dimension)) {
-            String reversal = PreserveRotation.getInverseByCommand(command);
-            if (null != reversal) {
-                dimension = "1";
-                result = reversal + " " + dimension;
-            }
-        }
         return result;
     }
 

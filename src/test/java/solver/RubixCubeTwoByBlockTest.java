@@ -1028,24 +1028,6 @@ public class RubixCubeTwoByBlockTest {
     }
 
 
-    //@Test
-    public void testGenerateStates() {
-        Map<Integer, SolutionSteps> solutions = cube.generateStates(null);
-        Assert.assertNotNull(solutions);
-        int solutionSize = solutions.size();
-
-        int trueCounter = 0;
-        for (Integer descriptorHash : solutions.keySet()) {
-            SolutionSteps steps = solutions.get(descriptorHash);
-            Assert.assertNotNull(steps);
-            if (steps.getSteps().isEmpty()) {
-                trueCounter++;
-            }
-        }
-        Assert.assertEquals(1, trueCounter);
-    }
-
-
     @Test
     public void testReverseSolutionSteps() {
         List<String> steps = new ArrayList<>();
@@ -1056,58 +1038,19 @@ public class RubixCubeTwoByBlockTest {
         steps.add(ReveralRotation.RIGHT.getCommand() + " 1");
         steps.add(ReveralRotation.CLOCKWISE.getCommand() + " 1");
         steps.add(ReveralRotation.COUNTER_CLOCKWISE.getCommand() + " 1");
-        steps.add(ReveralRotation.FORWARD_PRESERVE.getCommand() + " 0");
-        steps.add(ReveralRotation.BACKWARD_PRESRVE.getCommand() + " 0");
-        steps.add(ReveralRotation.LEFT_PRESERVE.getCommand() + " 0");
-        steps.add(ReveralRotation.RIGHT_PRESERVE.getCommand() + " 0");
-        steps.add(ReveralRotation.CLOCKWISE_PRESERVE.getCommand() + " 0");
-        steps.add(ReveralRotation.COUNTER_CLOCKWISE_PRESERVE.getCommand() + " 0");
 
         List<String> reversedSteps = ((TwoCube) cube).reverseSteps(steps);
         Assert.assertNotNull(reversedSteps);
         Assert.assertEquals(steps.size(), reversedSteps.size());
-        Assert.assertEquals(reversedSteps.get(0), ReveralRotation.COUNTER_CLOCKWISE.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(1), ReveralRotation.CLOCKWISE.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(2), ReveralRotation.RIGHT.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(3), ReveralRotation.LEFT.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(4), ReveralRotation.BACKWARD.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(5), ReveralRotation.FORWARD.getCommand() + " 1");
+        Assert.assertEquals(reversedSteps.get(0), ReveralRotation.CLOCKWISE.getCommand() + " 1");
+        Assert.assertEquals(reversedSteps.get(1), ReveralRotation.COUNTER_CLOCKWISE.getCommand() + " 1");
+        Assert.assertEquals(reversedSteps.get(2), ReveralRotation.LEFT.getCommand() + " 1");
+        Assert.assertEquals(reversedSteps.get(3), ReveralRotation.RIGHT.getCommand() + " 1");
+        Assert.assertEquals(reversedSteps.get(4), ReveralRotation.FORWARD.getCommand() + " 1");
+        Assert.assertEquals(reversedSteps.get(5), ReveralRotation.BACKWARD.getCommand() + " 1");
 
-        Assert.assertEquals(reversedSteps.get(6), ReveralRotation.CLOCKWISE.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(7), ReveralRotation.COUNTER_CLOCKWISE.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(8), ReveralRotation.LEFT.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(9), ReveralRotation.RIGHT.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(10), ReveralRotation.FORWARD.getCommand() + " 1");
-        Assert.assertEquals(reversedSteps.get(11), ReveralRotation.BACKWARD.getCommand() + " 1");
-
-        Assert.assertEquals(reversedSteps.get(12), "test 1");
+        Assert.assertEquals(reversedSteps.get(6), "test 1");
     }
-
-    @Test
-    public void testSolve() {
-        String solutionFile = "TwoByTwoCubeSolutions.txt";
-        Block[][][] mixedUpBlocks = getMixedUpBlocks();
-        String descriptor = cube.getDescriptor(mixedUpBlocks);
-        SolutionSteps solution = cube.solve(solutionFile, descriptor);
-        Assert.assertNotNull(solution);
-        List<String> generationSteps = solution.getSteps();
-        Assert.assertNotNull(generationSteps);
-        Assert.assertFalse(generationSteps.isEmpty());
-        List<String> expectedGenerationsteps = Arrays.asList("forward 1", "counter-clockwise 1", "backward 1", "right 1",
-                "counter-clockwise 1", "forward 1", "right 1", "forward 1", "counter-clockwise 1", "backward 1", "backward 1",
-                "counter-clockwise 1");
-        Assert.assertEquals(expectedGenerationsteps, generationSteps);
-
-        List<String> solutionSteps = solution.getSolutionSteps();
-        Assert.assertNotNull(solutionSteps);
-        Assert.assertFalse(solutionSteps.isEmpty());
-
-        System.out.println("Generation Steps: " + generationSteps);
-        System.out.println("Solution steps: " + solutionSteps);
-        List<String> expectedSolutionSteps = Arrays.asList("clockwise 1", "forward 1", "forward 1", "clockwise 1", "backward 1", "left 1", "backward 1", "clockwise 1", "left 1", "forward 1", "clockwise 1", "backward 1");
-        Assert.assertEquals(expectedSolutionSteps, solutionSteps);
-    }
-
 
     @Test
     public void testReadSolutionsFromFile() {
@@ -1371,52 +1314,6 @@ public class RubixCubeTwoByBlockTest {
     }
 
     @Test
-    public void correctCommandPreseration() {
-        String command = "fpf";
-        String dimension = "0";
-        String updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
-        Assert.assertEquals("backward 1", updatedCommand);
-
-
-        command = "bpf";
-        dimension = "0";
-        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
-        Assert.assertEquals("forward 1", updatedCommand);
-
-        command = "lpf";
-        dimension = "0";
-        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
-        Assert.assertEquals("right 1", updatedCommand);
-
-        command = "rpf";
-        dimension = "0";
-        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
-        Assert.assertEquals("left 1", updatedCommand);
-
-        command = "cpf";
-        dimension = "0";
-        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
-        Assert.assertEquals("counter-clockwise 1", updatedCommand);
-
-        command = "ccwpf";
-        dimension = "0";
-        updatedCommand = ((TwoCube) cube).correctPreserveCommand(command, dimension);
-        Assert.assertEquals("clockwise 1", updatedCommand);
-    }
-
-    @Test
-    public void testInversePreservationRotation() {
-        Assert.assertEquals("backward", PreserveRotation.getInverseByCommand("fpf"));
-        Assert.assertEquals("forward", PreserveRotation.getInverseByCommand("bpf"));
-
-        Assert.assertEquals("left", PreserveRotation.getInverseByCommand("rpf"));
-        Assert.assertEquals("right", PreserveRotation.getInverseByCommand("lpf"));
-
-        Assert.assertEquals("counter-clockwise", PreserveRotation.getInverseByCommand("cpf"));
-        Assert.assertEquals("clockwise", PreserveRotation.getInverseByCommand("ccwpf"));
-    }
-
-    @Test
     public void testReverseSteps() {
         List<String> steps = Arrays.asList("backward 1", "right 1", "counter-clockwise 1", "backward 1", "left 1", "counter-clockwise 1",
                 "counter-clockwise 1", "left 1", "clockwise 1", "right 1");
@@ -1425,21 +1322,47 @@ public class RubixCubeTwoByBlockTest {
         Assert.assertEquals(expectedReversedSteps, reversedSteps);
     }
 
-    @Test
-    public void testReversePreserveSteps() {
-        List<String> steps = Arrays.asList("fpf 0", "rpf 0", "cpf 0", "fpf 0", "rpf 0", "cpf 0",
-                "cpf 0", "rpf 0", "ccwpf 0", "lpf 0");
-        List<String> expectedReversedSteps = Arrays.asList("left 1", "counter-clockwise 1", "right 1", "clockwise 1",
-                "clockwise 1", "right 1", "forward 1", "clockwise 1", "right 1", "forward 1");
-        List<String> reversedSteps = ((TwoCube) cube).reverseSteps(steps);
-        Assert.assertEquals(expectedReversedSteps, reversedSteps);
+//    @Test
+    public void testGenerateStates() {
+        Map<Integer, SolutionSteps> solutions = cube.generateStates(null);
+        Assert.assertNotNull(solutions);
+        int solutionSize = solutions.size();
+
+        int trueCounter = 0;
+        for (Integer descriptorHash : solutions.keySet()) {
+            SolutionSteps steps = solutions.get(descriptorHash);
+            Assert.assertNotNull(steps);
+            if (steps.getSteps().isEmpty()) {
+                trueCounter++;
+            }
+        }
+        Assert.assertEquals(1, trueCounter);
     }
 
-    @Test
-    public void testReverseSinglePreserveSteps() {
-        List<String> steps = Arrays.asList("rpf 0");
-        List<String> expectedReversedSteps = Arrays.asList("right 1");
-        List<String> reversedSteps = ((TwoCube) cube).reverseSteps(steps);
-        Assert.assertEquals(expectedReversedSteps, reversedSteps);
+//    @Test
+    public void testSolve() {
+        String solutionFile = "TwoByTwoCubeSolutions.txt";
+        Block[][][] mixedUpBlocks = getMixedUpBlocks();
+        String descriptor = cube.getDescriptor(mixedUpBlocks);
+        SolutionSteps solution = cube.solve(solutionFile, descriptor);
+        Assert.assertNotNull(solution);
+        List<String> generationSteps = solution.getSteps();
+        Assert.assertNotNull(generationSteps);
+        Assert.assertFalse(generationSteps.isEmpty());
+        List<String> expectedGenerationsteps = Arrays.asList("f 1", "w 1", "b 1", "r 1",
+                "w 1", "f 1", "r 1", "f 1", "w 1", "b 1", "b 1",
+                "w 1");
+        Assert.assertEquals(expectedGenerationsteps, generationSteps);
+
+        List<String> solutionSteps = solution.getSolutionSteps();
+        Assert.assertNotNull(solutionSteps);
+        Assert.assertFalse(solutionSteps.isEmpty());
+
+        System.out.println("Generation Steps: " + generationSteps);
+        System.out.println("Solution steps: " + solutionSteps);
+        List<String> expectedSolutionSteps = Arrays.asList("c 1", "f 1", "f 1", "c 1", "b 1", "l 1", "b 1", "c 1", "l 1", "f 1", "c 1", "b 1");
+        Assert.assertEquals(expectedSolutionSteps, solutionSteps);
     }
+
+
 }
