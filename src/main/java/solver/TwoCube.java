@@ -207,7 +207,12 @@ public class TwoCube implements Cube {
          */
         /* remove all entries from src/test/resources */
         try {
-            FileUtils.cleanDirectory(new File("src/test/resources/working"));
+            File workingDirectory = new File("src/test/resources/working");
+            if (workingDirectory.exists()) {
+                FileUtils.cleanDirectory(workingDirectory);
+            } else {
+                workingDirectory.mkdirs();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -327,10 +332,7 @@ public class TwoCube implements Cube {
 
     private String getFileName(int movement) {
         String testResources = "src/test/resources/working/";
-        File directory = new File(testResources);
-        if (!directory.exists()) {
-            directory.mkdirs();
-        }
+
         String currentFileName = testResources + "solutionStep" + (movement) + ".txt";
         return currentFileName;
     }

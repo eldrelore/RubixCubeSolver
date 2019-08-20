@@ -981,8 +981,8 @@ public class RubixCubeTwoByBlockTest {
         cube.rotateDepthClockwise(1, blocks, steps);
         cube.rotateHeightLeft(1, blocks, steps);
         Assert.assertNotNull(steps);
-        Assert.assertEquals("clockwise 1", steps.get(0));
-        Assert.assertEquals("left 1", steps.get(1));
+        Assert.assertEquals("c 1", steps.get(0));
+        Assert.assertEquals("l 1", steps.get(1));
     }
 
 
@@ -1315,9 +1315,9 @@ public class RubixCubeTwoByBlockTest {
 
     @Test
     public void testReverseSteps() {
-        List<String> steps = Arrays.asList("backward 1", "right 1", "counter-clockwise 1", "backward 1", "left 1", "counter-clockwise 1",
-                "counter-clockwise 1", "left 1", "clockwise 1", "right 1");
-        List<String> expectedReversedSteps = Arrays.asList("left 1", "counter-clockwise 1", "right 1", "clockwise 1", "clockwise 1", "right 1", "forward 1", "clockwise 1", "left 1", "forward 1");
+        List<String> steps = Arrays.asList("b 1", "r 1", "w 1", "b 1", "l 1", "w 1",
+                "w 1", "l 1", "c 1", "r 1");
+        List<String> expectedReversedSteps = Arrays.asList("l 1", "w 1", "r 1", "c 1", "c 1", "r 1", "f 1", "c 1", "l 1", "f 1");
         List<String> reversedSteps = ((TwoCube) cube).reverseSteps(steps);
         Assert.assertEquals(expectedReversedSteps, reversedSteps);
     }
