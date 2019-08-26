@@ -1315,7 +1315,7 @@ public class RubixCubeTwoByBlockTest {
 
 
     /* These two are more integration / validation, one generates all the states, the other checks a known state & its solution */
-    @Test
+//    @Test
     public void testGenerateStates() {
         Map<Integer, SolutionSteps> solutions = cube.generateStates(null);
         Assert.assertNotNull(solutions);
@@ -1332,7 +1332,7 @@ public class RubixCubeTwoByBlockTest {
         Assert.assertEquals(1, trueCounter);
     }
 
-    @Test
+//    @Test
     public void testSolve() {
         String solutionFile = "TwoByTwoCubeSolutions.txt";
         Block[][][] mixedUpBlocks = getMixedUpBlocks();
