@@ -1,7 +1,6 @@
 package solver;
 
 import solver.types.BlockFace;
-import solver.types.BlockType;
 
 import java.util.Objects;
 
@@ -9,7 +8,7 @@ public class Block {
     private int width;
     private int height;
     private int depth;
-    private BlockType type;
+
     private BlockFace top = new BlockFace();
     private BlockFace bottom = new BlockFace();
     private BlockFace left = new BlockFace();
@@ -18,14 +17,13 @@ public class Block {
     private BlockFace back = new BlockFace();
 
     public Block(int currentWidth, int currentHeight, int currentDepth,
-                 BlockType blockType,
+
                  BlockFace top, BlockFace bottom,
                  BlockFace left, BlockFace right,
                  BlockFace front, BlockFace back) {
         this.width = currentWidth;
         this.height = currentHeight;
         this.depth = currentDepth;
-        this.type = blockType;
         this.top = top;
         this.bottom = bottom;
         this.left = left;
@@ -110,14 +108,6 @@ public class Block {
         this.back = back;
     }
 
-    public BlockType getType() {
-        return type;
-    }
-
-    public void setType(BlockType type) {
-        this.type = type;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -126,7 +116,6 @@ public class Block {
         return width == block.width &&
                 height == block.height &&
                 depth == block.depth &&
-                type == block.type &&
                 Objects.equals(top, block.top) &&
                 Objects.equals(bottom, block.bottom) &&
                 Objects.equals(left, block.left) &&
@@ -137,7 +126,7 @@ public class Block {
 
     @Override
     public int hashCode() {
-        return Objects.hash(width, height, depth, type, top, bottom, left, right, front, back);
+        return Objects.hash(width, height, depth,  top, bottom, left, right, front, back);
     }
 
     @Override
@@ -146,7 +135,6 @@ public class Block {
                 "width=" + width +
                 ", height=" + height +
                 ", depth=" + depth +
-                ", type=" + type +
                 ", top=" + top +
                 ", bottom=" + bottom +
                 ", left=" + left +

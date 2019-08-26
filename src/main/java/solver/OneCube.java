@@ -2,7 +2,6 @@ package solver;
 
 import solver.types.FaceColor;
 import solver.types.BlockFace;
-import solver.types.BlockType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +17,6 @@ public class OneCube implements Cube {
     @Override
     public Block[][][] initializeCube() {
         Block block = new Block(0, 0, 0,
-                BlockType.DEFAULT,
                 new BlockFace(FaceColor.BLUE), new BlockFace(FaceColor.GREEN),
                 new BlockFace(FaceColor.ORANGE), new BlockFace(FaceColor.RED),
                 new BlockFace(FaceColor.YELLOW), new BlockFace(FaceColor.WHITE));

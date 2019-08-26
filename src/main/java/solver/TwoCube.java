@@ -31,7 +31,6 @@ public class TwoCube implements Cube {
         Block[][][] cube = new Block[SIZE][SIZE][SIZE];
         List<Block> blocks = new ArrayList<>();
         Block bottomLeftFrontBlock = new Block(0, 0, 0,
-                BlockType.CORNER,
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.GREEN),
                 new BlockFace(FaceColor.ORANGE),
@@ -40,7 +39,6 @@ public class TwoCube implements Cube {
                 new BlockFace(FaceColor.DEFAULT));
 
         Block bottomRightFrontBlock = new Block(1, 0, 0,
-                BlockType.CORNER,
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.GREEN),
                 new BlockFace(FaceColor.DEFAULT),
@@ -49,7 +47,6 @@ public class TwoCube implements Cube {
                 new BlockFace(FaceColor.DEFAULT));
 
         Block topLeftFrontBlock = new Block(0, 1, 0,
-                BlockType.CORNER,
                 new BlockFace(FaceColor.BLUE),
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.ORANGE),
@@ -58,7 +55,6 @@ public class TwoCube implements Cube {
                 new BlockFace(FaceColor.DEFAULT));
 
         Block topRightFrontBlock = new Block(1, 1, 0,
-                BlockType.CORNER,
                 new BlockFace(FaceColor.BLUE),
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.DEFAULT),
@@ -68,7 +64,6 @@ public class TwoCube implements Cube {
 
 
         Block bottomLeftBackBlock = new Block(0, 0, 1,
-                BlockType.CORNER,
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.GREEN),
                 new BlockFace(FaceColor.ORANGE),
@@ -77,7 +72,6 @@ public class TwoCube implements Cube {
                 new BlockFace(FaceColor.YELLOW));
 
         Block bottomRightBackBlock = new Block(1, 0, 1,
-                BlockType.CORNER,
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.GREEN),
                 new BlockFace(FaceColor.DEFAULT),
@@ -86,7 +80,6 @@ public class TwoCube implements Cube {
                 new BlockFace(FaceColor.YELLOW));
 
         Block topLeftBackBlock = new Block(0, 1, 1,
-                BlockType.CORNER,
                 new BlockFace(FaceColor.BLUE),
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.ORANGE),
@@ -95,7 +88,6 @@ public class TwoCube implements Cube {
                 new BlockFace(FaceColor.YELLOW));
 
         Block topRightBackBlock = new Block(1, 1, 1,
-                BlockType.CORNER,
                 new BlockFace(FaceColor.BLUE),
                 new BlockFace(FaceColor.DEFAULT),
                 new BlockFace(FaceColor.DEFAULT),
@@ -410,7 +402,6 @@ public class TwoCube implements Cube {
         cloneBlockFace(originalBlock.getFront(), clonedBlock.getFront());
         cloneBlockFace(originalBlock.getLeft(), clonedBlock.getLeft());
         cloneBlockFace(originalBlock.getRight(), clonedBlock.getRight());
-        clonedBlock.setType(originalBlock.getType());
     }
 
     public void cloneBlockFace(BlockFace originalBlockFace, BlockFace clonedBlockFace) {
