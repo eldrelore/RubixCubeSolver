@@ -1,11 +1,10 @@
 package solver.types;
-public enum BlockFace {
-    TOP(0),
-    BOTTOM(1),
-    LEFT(2),
-    RIGHT(3),
-    FRONT(4),
-    BACK(5);
+
+public enum Dimensions {
+
+    WIDTH(0),
+    HEIGHT(1),
+    DEPTH(2);
 
     public int getValue() {
         return value;
@@ -17,7 +16,7 @@ public enum BlockFace {
 
     private int value;
 
-    BlockFace(int value) {
+    Dimensions(int value) {
         setValue(value);
     }
 }

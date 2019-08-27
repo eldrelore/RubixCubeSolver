@@ -31,69 +31,69 @@ public class TwoCube implements Cube {
         Block[][][] cube = new Block[SIZE][SIZE][SIZE];
         List<Block> blocks = new ArrayList<>();
         Block bottomLeftFrontBlock = new Block(0, 0, 0,
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.GREEN),
-                new BlockFace(FaceColor.ORANGE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.WHITE),
-                new BlockFace(FaceColor.DEFAULT));
+                new Color[]{Color.DEFAULT,
+                        Color.GREEN,
+                        Color.ORANGE,
+                        Color.DEFAULT,
+                        Color.WHITE,
+                        Color.DEFAULT});
 
         Block bottomRightFrontBlock = new Block(1, 0, 0,
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.GREEN),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.RED),
-                new BlockFace(FaceColor.WHITE),
-                new BlockFace(FaceColor.DEFAULT));
+                new Color[]{Color.DEFAULT,
+                        Color.GREEN,
+                        Color.DEFAULT,
+                        Color.RED,
+                        Color.WHITE,
+                        Color.DEFAULT});
 
         Block topLeftFrontBlock = new Block(0, 1, 0,
-                new BlockFace(FaceColor.BLUE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.ORANGE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.WHITE),
-                new BlockFace(FaceColor.DEFAULT));
+                new Color[]{Color.BLUE,
+                        Color.DEFAULT,
+                        Color.ORANGE,
+                        Color.DEFAULT,
+                        Color.WHITE,
+                        Color.DEFAULT});
 
         Block topRightFrontBlock = new Block(1, 1, 0,
-                new BlockFace(FaceColor.BLUE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.RED),
-                new BlockFace(FaceColor.WHITE),
-                new BlockFace(FaceColor.DEFAULT));
+                new Color[]{ Color.BLUE,
+                Color.DEFAULT,
+                Color.DEFAULT,
+                Color.RED,
+                Color.WHITE,
+                Color.DEFAULT});
 
 
         Block bottomLeftBackBlock = new Block(0, 0, 1,
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.GREEN),
-                new BlockFace(FaceColor.ORANGE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.YELLOW));
+                new Color[]{ Color.DEFAULT,
+                Color.GREEN,
+                Color.ORANGE,
+                Color.DEFAULT,
+                Color.DEFAULT,
+                Color.YELLOW});
 
         Block bottomRightBackBlock = new Block(1, 0, 1,
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.GREEN),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.RED),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.YELLOW));
+                new Color[]{ Color.DEFAULT,
+                Color.GREEN,
+                Color.DEFAULT,
+                Color.RED,
+                Color.DEFAULT,
+                Color.YELLOW});
 
         Block topLeftBackBlock = new Block(0, 1, 1,
-                new BlockFace(FaceColor.BLUE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.ORANGE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.YELLOW));
+                new Color[]{  Color.BLUE,
+                Color.DEFAULT,
+                Color.ORANGE,
+                Color.DEFAULT,
+                Color.DEFAULT,
+                Color.YELLOW});
 
         Block topRightBackBlock = new Block(1, 1, 1,
-                new BlockFace(FaceColor.BLUE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.RED),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.YELLOW));
+                new Color[]{ Color.BLUE,
+                Color.DEFAULT,
+                Color.DEFAULT,
+                Color.RED,
+                Color.DEFAULT,
+                Color.YELLOW});
 
         blocks.add(bottomLeftFrontBlock);
         blocks.add(bottomRightFrontBlock);
@@ -323,8 +323,6 @@ public class TwoCube implements Cube {
 
 
     private String getFileName(int movement) {
-
-
         String currentFileName = WORKING_DIRECTORY + "/solutionStep" + (movement) + ".txt";
         return currentFileName;
     }
@@ -396,19 +394,14 @@ public class TwoCube implements Cube {
     }
 
     public void cloneBlock(Block originalBlock, Block clonedBlock) {
-        cloneBlockFace(originalBlock.getTop(), clonedBlock.getTop());
-        cloneBlockFace(originalBlock.getBottom(), clonedBlock.getBottom());
-        cloneBlockFace(originalBlock.getBack(), clonedBlock.getBack());
-        cloneBlockFace(originalBlock.getFront(), clonedBlock.getFront());
-        cloneBlockFace(originalBlock.getLeft(), clonedBlock.getLeft());
-        cloneBlockFace(originalBlock.getRight(), clonedBlock.getRight());
+        clonedBlock.setTop(originalBlock.getTop());
+        clonedBlock.setBottom(originalBlock.getBottom());
+        clonedBlock.setLeft(originalBlock.getLeft());
+        clonedBlock.setRight(originalBlock.getRight());
+        clonedBlock.setFront(originalBlock.getFront());
+        clonedBlock.setBack(originalBlock.getBack());
     }
 
-    public void cloneBlockFace(BlockFace originalBlockFace, BlockFace clonedBlockFace) {
-        FaceColor color = originalBlockFace.getColor();
-        clonedBlockFace.setColor(color);
-
-    }
 
     public String readFileContents(String filename) {
         String content = "";

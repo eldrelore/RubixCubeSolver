@@ -42,61 +42,61 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     }
                 }
             }
@@ -114,62 +114,62 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
                         /* should now be rotated, and what was 1,1,0*/
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.WHITE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.RED, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.YELLOW, block.getRight());
+                        Assert.assertEquals(Color.RED, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.WHITE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.ORANGE, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.YELLOW, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.ORANGE, block.getBack());
                     }
                 }
             }
@@ -187,62 +187,62 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
                         /* should now be rotated, and what was 1,1,0*/
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.YELLOW, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.ORANGE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.WHITE, block.getRight());
+                        Assert.assertEquals(Color.ORANGE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.YELLOW, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.RED, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.WHITE, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.RED, block.getBack());
                     }
                 }
             }
@@ -260,62 +260,62 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
                         /* should now be rotated, and what was 1,1,0*/
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.YELLOW, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.ORANGE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.WHITE, block.getRight());
+                        Assert.assertEquals(Color.ORANGE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.YELLOW, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.RED, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.WHITE, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.RED, block.getBack());
                     }
                 }
             }
@@ -332,62 +332,62 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
                         /* should now be rotated, and what was 1,1,0*/
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.WHITE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.RED, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.YELLOW, block.getRight());
+                        Assert.assertEquals(Color.RED, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.WHITE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.ORANGE, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.YELLOW, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.ORANGE, block.getBack());
                     }
                 }
             }
@@ -405,62 +405,62 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.WHITE, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.BLUE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
                         /* should now be rotated, and what was 1,1,0*/
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.YELLOW, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.YELLOW, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.BLUE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.WHITE, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.GREEN, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.YELLOW, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBack().getColor());
+                        Assert.assertEquals(Color.YELLOW, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.GREEN, block.getBack());
                     }
                 }
             }
@@ -477,62 +477,62 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.YELLOW, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.GREEN, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
                         /* should now be rotated, and what was 1,1,0*/
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.WHITE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.WHITE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.GREEN, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.YELLOW, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.BLUE, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.WHITE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getBack().getColor());
+                        Assert.assertEquals(Color.WHITE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.BLUE, block.getBack());
                     }
                 }
             }
@@ -550,62 +550,62 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.YELLOW, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.GREEN, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
                         /* should now be rotated, and what was 1,1,0*/
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.WHITE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.WHITE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.GREEN, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.YELLOW, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.BLUE, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.WHITE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getBack().getColor());
+                        Assert.assertEquals(Color.WHITE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.BLUE, block.getBack());
                     }
                 }
             }
@@ -623,62 +623,62 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.WHITE, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.BLUE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
                         /* should now be rotated, and what was 1,1,0*/
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.YELLOW, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.YELLOW, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.BLUE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.WHITE, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.GREEN, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.YELLOW, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBack().getColor());
+                        Assert.assertEquals(Color.YELLOW, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.GREEN, block.getBack());
                     }
                 }
             }
@@ -695,62 +695,62 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
                         /* should now be rotated, and what was 1,1,0*/
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.RED, block.getBottom());
+                        Assert.assertEquals(Color.GREEN, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.RED, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.BLUE, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.ORANGE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.ORANGE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.GREEN, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.ORANGE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.ORANGE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.BLUE, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     }
                 }
             }
@@ -767,62 +767,62 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
                         /* should now be rotated, and what was 1,1,0*/
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.ORANGE, block.getBottom());
+                        Assert.assertEquals(Color.BLUE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.ORANGE, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.GREEN, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.RED, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.RED, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.BLUE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.RED, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.RED, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.GREEN, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     }
                 }
             }
@@ -839,62 +839,62 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
                         /* should now be rotated, and what was 1,1,0*/
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.ORANGE, block.getBottom());
+                        Assert.assertEquals(Color.BLUE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.ORANGE, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.GREEN, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.RED, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.RED, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.BLUE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.RED, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.RED, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.GREEN, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     }
                 }
             }
@@ -912,62 +912,62 @@ public class RubixCubeTwoByBlockTest {
                 for (int z = 0; z < SIZE; z++) {
                     Block block = blocks[x][y][z];
                     if (0 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.GREEN, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 1 == y && 0 == z) {
                         /* should now be rotated, and what was 1,1,0*/
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.ORANGE, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (0 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.RED, block.getBottom());
+                        Assert.assertEquals(Color.GREEN, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 0 == z) {
-                        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.WHITE, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBack().getColor());
+                        Assert.assertEquals(Color.BLUE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.RED, block.getRight());
+                        Assert.assertEquals(Color.WHITE, block.getFront());
+                        Assert.assertEquals(Color.DEFAULT, block.getBack());
                     } else if (1 == x && 0 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.RED, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.DEFAULT, block.getTop());
+                        Assert.assertEquals(Color.RED, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.BLUE, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (0 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.ORANGE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.GREEN, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.ORANGE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.GREEN, block.getLeft());
+                        Assert.assertEquals(Color.DEFAULT, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     } else if (1 == x && 1 == y && 1 == z) {
-                        Assert.assertEquals(FaceColor.ORANGE, block.getTop().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getBottom().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getLeft().getColor());
-                        Assert.assertEquals(FaceColor.BLUE, block.getRight().getColor());
-                        Assert.assertEquals(FaceColor.DEFAULT, block.getFront().getColor());
-                        Assert.assertEquals(FaceColor.YELLOW, block.getBack().getColor());
+                        Assert.assertEquals(Color.ORANGE, block.getTop());
+                        Assert.assertEquals(Color.DEFAULT, block.getBottom());
+                        Assert.assertEquals(Color.DEFAULT, block.getLeft());
+                        Assert.assertEquals(Color.BLUE, block.getRight());
+                        Assert.assertEquals(Color.DEFAULT, block.getFront());
+                        Assert.assertEquals(Color.YELLOW, block.getBack());
                     }
                 }
             }
@@ -992,7 +992,20 @@ public class RubixCubeTwoByBlockTest {
         String initializedCubeDescriptor = cube.getDescriptor(initializedBlockArray);
         Block[][][] blockArrayFromDescriptor = ((TwoCube) cube).initializeCubeFromDescriptor(initializedCubeDescriptor);
         Assert.assertNotNull(blockArrayFromDescriptor);
-        Assert.assertArrayEquals(initializedBlockArray, blockArrayFromDescriptor);
+        int size = initializedBlockArray.length;
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                for (int z = 0; z < size; z++) {
+                    Block initializedBlock = initializedBlockArray[x][y][z];
+                    Block descriptorBlock = blockArrayFromDescriptor[x][y][z];
+                    Assert.assertArrayEquals(initializedBlock.getDimensions(), descriptorBlock.getDimensions());
+                    Assert.assertArrayEquals(initializedBlock.getFaces(), descriptorBlock.getFaces());
+                }
+            }
+
+        }
+
+
     }
 
     @Test
@@ -1071,7 +1084,7 @@ public class RubixCubeTwoByBlockTest {
 
     @Test
     public void testGenerateAllCubeRotationsFromState() {
-        String line = "{\"steps\":[],\"descriptor\":\"[[[{\\\"width\\\":0,\\\"height\\\":0,\\\"depth\\\":0,\\\"top\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"bottom\\\":{\\\"color\\\":\\\"GREEN\\\"},\\\"left\\\":{\\\"color\\\":\\\"ORANGE\\\"},\\\"right\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"front\\\":{\\\"color\\\":\\\"WHITE\\\"},\\\"back\\\":{\\\"color\\\":\\\"DEFAULT\\\"}},{\\\"width\\\":0,\\\"height\\\":0,\\\"depth\\\":1,\\\"top\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"bottom\\\":{\\\"color\\\":\\\"GREEN\\\"},\\\"left\\\":{\\\"color\\\":\\\"ORANGE\\\"},\\\"right\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"front\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"back\\\":{\\\"color\\\":\\\"YELLOW\\\"}}],[{\\\"width\\\":0,\\\"height\\\":1,\\\"depth\\\":0,\\\"top\\\":{\\\"color\\\":\\\"BLUE\\\"},\\\"bottom\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"left\\\":{\\\"color\\\":\\\"ORANGE\\\"},\\\"right\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"front\\\":{\\\"color\\\":\\\"WHITE\\\"},\\\"back\\\":{\\\"color\\\":\\\"DEFAULT\\\"}},{\\\"width\\\":0,\\\"height\\\":1,\\\"depth\\\":1,\\\"top\\\":{\\\"color\\\":\\\"BLUE\\\"},\\\"bottom\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"left\\\":{\\\"color\\\":\\\"ORANGE\\\"},\\\"right\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"front\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"back\\\":{\\\"color\\\":\\\"YELLOW\\\"}}]],[[{\\\"width\\\":1,\\\"height\\\":0,\\\"depth\\\":0,\\\"top\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"bottom\\\":{\\\"color\\\":\\\"GREEN\\\"},\\\"left\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"right\\\":{\\\"color\\\":\\\"RED\\\"},\\\"front\\\":{\\\"color\\\":\\\"WHITE\\\"},\\\"back\\\":{\\\"color\\\":\\\"DEFAULT\\\"}},{\\\"width\\\":1,\\\"height\\\":0,\\\"depth\\\":1,\\\"top\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"bottom\\\":{\\\"color\\\":\\\"GREEN\\\"},\\\"left\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"right\\\":{\\\"color\\\":\\\"RED\\\"},\\\"front\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"back\\\":{\\\"color\\\":\\\"YELLOW\\\"}}],[{\\\"width\\\":1,\\\"height\\\":1,\\\"depth\\\":0,\\\"top\\\":{\\\"color\\\":\\\"BLUE\\\"},\\\"bottom\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"left\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"right\\\":{\\\"color\\\":\\\"RED\\\"},\\\"front\\\":{\\\"color\\\":\\\"WHITE\\\"},\\\"back\\\":{\\\"color\\\":\\\"DEFAULT\\\"}},{\\\"width\\\":1,\\\"height\\\":1,\\\"depth\\\":1,\\\"top\\\":{\\\"color\\\":\\\"BLUE\\\"},\\\"bottom\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"left\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"right\\\":{\\\"color\\\":\\\"RED\\\"},\\\"front\\\":{\\\"color\\\":\\\"DEFAULT\\\"},\\\"back\\\":{\\\"color\\\":\\\"YELLOW\\\"}}]]]\"}\n";
+        String line = "{\"steps\":[\"b 1\"],\"solutionSteps\":[],\"descriptor\":\"[[[{\\\"faces\\\":[\\\"\\\",\\\"g\\\",\\\"o\\\",\\\"\\\",\\\"w\\\",\\\"\\\"],\\\"dimensions\\\":[0,0,0]},{\\\"faces\\\":[\\\"\\\",\\\"g\\\",\\\"o\\\",\\\"\\\",\\\"\\\",\\\"y\\\"],\\\"dimensions\\\":[0,0,1]}],[{\\\"faces\\\":[\\\"b\\\",\\\"\\\",\\\"o\\\",\\\"\\\",\\\"w\\\",\\\"\\\"],\\\"dimensions\\\":[0,1,0]},{\\\"faces\\\":[\\\"b\\\",\\\"\\\",\\\"o\\\",\\\"\\\",\\\"\\\",\\\"y\\\"],\\\"dimensions\\\":[0,1,1]}]],[[{\\\"faces\\\":[\\\"\\\",\\\"y\\\",\\\"\\\",\\\"r\\\",\\\"g\\\",\\\"\\\"],\\\"dimensions\\\":[1,0,0]},{\\\"faces\\\":[\\\"\\\",\\\"y\\\",\\\"\\\",\\\"r\\\",\\\"\\\",\\\"b\\\"],\\\"dimensions\\\":[1,0,1]}],[{\\\"faces\\\":[\\\"w\\\",\\\"\\\",\\\"\\\",\\\"r\\\",\\\"g\\\",\\\"\\\"],\\\"dimensions\\\":[1,1,0]},{\\\"faces\\\":[\\\"w\\\",\\\"\\\",\\\"\\\",\\\"r\\\",\\\"\\\",\\\"b\\\"],\\\"dimensions\\\":[1,1,1]}]]]\"}";
         ObjectMapper mapper = new ObjectMapper();
         boolean exceptionEncountered = false;
         try {
@@ -1089,29 +1102,21 @@ public class RubixCubeTwoByBlockTest {
         Assert.assertFalse(exceptionEncountered);
     }
 
-
-    @Test
-    public void testCloneBlockFace() {
-        BlockFace originalBlockFace = new BlockFace();
-        FaceColor testColor = FaceColor.BLUE;
-        originalBlockFace.setColor(testColor);
-        BlockFace clonedBlockFace = new BlockFace();
-        ((TwoCube) cube).cloneBlockFace(originalBlockFace, clonedBlockFace);
-        Assert.assertEquals(testColor, clonedBlockFace.getColor());
-    }
-
     @Test
     public void testCloneBlock() {
         Block bottomLeftFrontBlock = new Block(0, 0, 0,
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.GREEN),
-                new BlockFace(FaceColor.ORANGE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.WHITE),
-                new BlockFace(FaceColor.DEFAULT));
+                new Color[]{Color.DEFAULT,
+                        Color.GREEN,
+                        Color.ORANGE,
+                        Color.DEFAULT,
+                        Color.WHITE,
+                        Color.DEFAULT});
         Block clonedBlock = new Block();
         ((TwoCube) cube).cloneBlock(bottomLeftFrontBlock, clonedBlock);
-        Assert.assertEquals(bottomLeftFrontBlock, clonedBlock);
+        Assert.assertEquals(bottomLeftFrontBlock.getWidth(), clonedBlock.getWidth());
+        Assert.assertEquals(bottomLeftFrontBlock.getHeight(), clonedBlock.getHeight());
+        Assert.assertEquals(bottomLeftFrontBlock.getDepth(), clonedBlock.getDepth());
+        Assert.assertArrayEquals(bottomLeftFrontBlock.getFaces(), clonedBlock.getFaces());
     }
 
     @Test
@@ -1128,12 +1133,12 @@ public class RubixCubeTwoByBlockTest {
             for (int y = 0; y < size; y++) {
                 for (int z = 0; z < size; z++) {
                     Block block = blocks[x][y][z];
-                    Assert.assertNotNull(block.getFront().getColor());
-                    Assert.assertNotNull(block.getBack().getColor());
-                    Assert.assertNotNull(block.getTop().getColor());
-                    Assert.assertNotNull(block.getBottom().getColor());
-                    Assert.assertNotNull(block.getRight().getColor());
-                    Assert.assertNotNull(block.getLeft().getColor());
+                    Assert.assertNotNull(block.getFront());
+                    Assert.assertNotNull(block.getBack());
+                    Assert.assertNotNull(block.getTop());
+                    Assert.assertNotNull(block.getBottom());
+                    Assert.assertNotNull(block.getRight());
+                    Assert.assertNotNull(block.getLeft());
 
                     Assert.assertEquals(x, block.getWidth());
                     Assert.assertEquals(y, block.getHeight());
@@ -1150,69 +1155,69 @@ public class RubixCubeTwoByBlockTest {
         List<Block> blocks = new ArrayList<>();
         /* This is the one you always have to make sure matches*/
         Block bottomLeftFrontBlock = new Block(0, 0, 0,
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.GREEN),
-                new BlockFace(FaceColor.ORANGE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.WHITE),
-                new BlockFace(FaceColor.DEFAULT));
+                new Color[]{Color.DEFAULT,
+                        Color.GREEN,
+                        Color.ORANGE,
+                        Color.DEFAULT,
+                        Color.WHITE,
+                        Color.DEFAULT});
 
         Block bottomRightFrontBlock = new Block(1, 0, 0,
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.WHITE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.BLUE),
-                new BlockFace(FaceColor.ORANGE),
-                new BlockFace(FaceColor.DEFAULT));
+                new Color[]{Color.DEFAULT,
+                        Color.WHITE,
+                        Color.DEFAULT,
+                        Color.BLUE,
+                        Color.ORANGE,
+                        Color.DEFAULT});
 
         Block topLeftFrontBlock = new Block(0, 1, 0,
-                new BlockFace(FaceColor.WHITE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.RED),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.BLUE),
-                new BlockFace(FaceColor.DEFAULT));
+                new Color[]{Color.WHITE,
+                        Color.DEFAULT,
+                        Color.RED,
+                        Color.DEFAULT,
+                        Color.BLUE,
+                        Color.DEFAULT});
 
         Block topRightFrontBlock = new Block(1, 1, 0,
-                new BlockFace(FaceColor.BLUE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.YELLOW),
-                new BlockFace(FaceColor.RED),
-                new BlockFace(FaceColor.DEFAULT));
+                new Color[]{Color.BLUE,
+                        Color.DEFAULT,
+                        Color.DEFAULT,
+                        Color.YELLOW,
+                        Color.RED,
+                        Color.DEFAULT});
 
 
         Block bottomLeftBackBlock = new Block(0, 0, 1,
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.YELLOW),
-                new BlockFace(FaceColor.GREEN),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.ORANGE));
+                new Color[]{Color.DEFAULT,
+                        Color.YELLOW,
+                        Color.GREEN,
+                        Color.DEFAULT,
+                        Color.DEFAULT,
+                        Color.ORANGE});
 
         Block bottomRightBackBlock = new Block(1, 0, 1,
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.YELLOW),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.BLUE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.ORANGE));
+                new Color[]{Color.DEFAULT,
+                        Color.YELLOW,
+                        Color.DEFAULT,
+                        Color.BLUE,
+                        Color.DEFAULT,
+                        Color.ORANGE});
 
         Block topLeftBackBlock = new Block(0, 1, 1,
-                new BlockFace(FaceColor.YELLOW),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.GREEN),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.RED));
+                new Color[]{Color.YELLOW,
+                        Color.DEFAULT,
+                        Color.GREEN,
+                        Color.DEFAULT,
+                        Color.DEFAULT,
+                        Color.RED});
 
         Block topRightBackBlock = new Block(1, 1, 1,
-                new BlockFace(FaceColor.WHITE),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.GREEN),
-                new BlockFace(FaceColor.DEFAULT),
-                new BlockFace(FaceColor.RED));
+                new Color[]{Color.WHITE,
+                        Color.DEFAULT,
+                        Color.DEFAULT,
+                        Color.GREEN,
+                        Color.DEFAULT,
+                        Color.RED});
 
         blocks.add(bottomLeftFrontBlock);
         blocks.add(bottomRightFrontBlock);
@@ -1305,6 +1310,13 @@ public class RubixCubeTwoByBlockTest {
     }
 
     @Test
+    public void testGenerateDescriptorSimplify() {
+        Block[][][] blocks = getMixedUpBlocks();
+        String descriptor = cube.getDescriptor(blocks);
+        Assert.assertEquals("[[[{\"faces\":[\"\",\"g\",\"o\",\"\",\"w\",\"\"],\"dimensions\":[0,0,0]},{\"faces\":[\"\",\"y\",\"g\",\"\",\"\",\"o\"],\"dimensions\":[0,0,1]}],[{\"faces\":[\"w\",\"\",\"r\",\"\",\"b\",\"\"],\"dimensions\":[0,1,0]},{\"faces\":[\"y\",\"\",\"g\",\"\",\"\",\"r\"],\"dimensions\":[0,1,1]}]],[[{\"faces\":[\"\",\"w\",\"\",\"b\",\"o\",\"\"],\"dimensions\":[1,0,0]},{\"faces\":[\"\",\"y\",\"\",\"b\",\"\",\"o\"],\"dimensions\":[1,0,1]}],[{\"faces\":[\"b\",\"\",\"\",\"y\",\"r\",\"\"],\"dimensions\":[1,1,0]},{\"faces\":[\"w\",\"\",\"\",\"g\",\"\",\"r\"],\"dimensions\":[1,1,1]}]]]", descriptor);
+    }
+
+    @Test
     public void testReverseSteps() {
         List<String> steps = Arrays.asList("b 1", "r 1", "w 1", "b 1", "l 1", "w 1",
                 "w 1", "l 1", "c 1", "r 1");
@@ -1315,7 +1327,7 @@ public class RubixCubeTwoByBlockTest {
 
 
     /* These two are more integration / validation, one generates all the states, the other checks a known state & its solution */
-//    @Test
+    @Test
     public void testGenerateStates() {
         Map<Integer, SolutionSteps> solutions = cube.generateStates(null);
         Assert.assertNotNull(solutions);

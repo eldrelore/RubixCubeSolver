@@ -3,7 +3,7 @@ package solver;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import solver.types.FaceColor;
+import solver.types.Color;
 
 public class RubixCubeOneByBlockTest {
 
@@ -31,12 +31,12 @@ public class RubixCubeOneByBlockTest {
             make sure it has all the right faces (and type)*/
         Block[][][] blocks = cube.initializeCube();
         Block block = blocks[0][0][0];
-        Assert.assertEquals(FaceColor.BLUE, block.getTop().getColor());
-        Assert.assertEquals(FaceColor.GREEN, block.getBottom().getColor());
-        Assert.assertEquals(FaceColor.ORANGE, block.getLeft().getColor());
-        Assert.assertEquals(FaceColor.RED, block.getRight().getColor());
-        Assert.assertEquals(FaceColor.YELLOW, block.getFront().getColor());
-        Assert.assertEquals(FaceColor.WHITE, block.getBack().getColor());
+        Assert.assertEquals(Color.BLUE, block.getTop());
+        Assert.assertEquals(Color.GREEN, block.getBottom());
+        Assert.assertEquals(Color.ORANGE, block.getLeft());
+        Assert.assertEquals(Color.RED, block.getRight());
+        Assert.assertEquals(Color.YELLOW, block.getFront());
+        Assert.assertEquals(Color.WHITE, block.getBack());
     }
 
     @Test

@@ -1,111 +1,130 @@
 package solver;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import solver.types.BlockFace;
+import solver.types.Color;
 
 import java.util.Objects;
 
-public class Block {
-    private int width;
-    private int height;
-    private int depth;
+import static solver.types.BlockFace.*;
+import static solver.types.Dimensions.*;
 
-    private BlockFace top = new BlockFace();
-    private BlockFace bottom = new BlockFace();
-    private BlockFace left = new BlockFace();
-    private BlockFace right = new BlockFace();
-    private BlockFace front = new BlockFace();
-    private BlockFace back = new BlockFace();
+public class Block {
+
+    private Color[] faces = new Color[6];
+    private int[] dimensions = new int[3];
+
+    public int[] getDimensions() {
+        return dimensions;
+    }
+
+    public void setDimensions(int[] dimensions) {
+        this.dimensions = dimensions;
+    }
+
+
+    public Color[] getFaces() {
+        return faces;
+    }
+
+    public void setFaces(Color[] faces) {
+        this.faces = faces;
+    }
+
 
     public Block(int currentWidth, int currentHeight, int currentDepth,
-
-                 BlockFace top, BlockFace bottom,
-                 BlockFace left, BlockFace right,
-                 BlockFace front, BlockFace back) {
-        this.width = currentWidth;
-        this.height = currentHeight;
-        this.depth = currentDepth;
-        this.top = top;
-        this.bottom = bottom;
-        this.left = left;
-        this.right = right;
-        this.front = front;
-        this.back = back;
+                 Color[] currentFaces) {
+        setWidth(currentWidth);
+        setHeight(currentHeight);
+        setDepth(currentDepth);
+        setWidth(currentWidth);
+        setHeight(currentHeight);
+        setDepth(currentDepth);
+        setFaces(currentFaces);
     }
 
     public Block() {
     }
 
-
+    @JsonIgnore
     public int getWidth() {
-        return width;
+        return dimensions[WIDTH.getValue()];
     }
 
     public void setWidth(int width) {
-        this.width = width;
+        dimensions[WIDTH.getValue()] = width;
     }
 
+    @JsonIgnore
     public int getHeight() {
-        return height;
+        return dimensions[HEIGHT.getValue()];
     }
 
     public void setHeight(int height) {
-        this.height = height;
+        dimensions[HEIGHT.getValue()] = height;
     }
 
+    @JsonIgnore
     public int getDepth() {
-        return depth;
+        return dimensions[DEPTH.getValue()];
     }
 
     public void setDepth(int depth) {
-        this.depth = depth;
+        dimensions[DEPTH.getValue()] = depth;
     }
 
-    public BlockFace getTop() {
-        return top;
+    @JsonIgnore
+    public Color getTop() {
+        return faces[TOP.getValue()];
     }
 
-    public void setTop(BlockFace top) {
-        this.top = top;
+    public void setTop(Color top) {
+        faces[TOP.getValue()] = top;
     }
 
-    public BlockFace getBottom() {
-        return bottom;
+    @JsonIgnore
+    public Color getBottom() {
+        return faces[BOTTOM.getValue()];
     }
 
-    public void setBottom(BlockFace bottom) {
-        this.bottom = bottom;
+    public void setBottom(Color bottom) {
+        faces[BOTTOM.getValue()] = bottom;
     }
 
-    public BlockFace getLeft() {
-        return left;
+    @JsonIgnore
+    public Color getLeft() {
+        return faces[LEFT.getValue()];
     }
 
-    public void setLeft(BlockFace left) {
-        this.left = left;
+    public void setLeft(Color left) {
+        faces[LEFT.getValue()] = left;
     }
 
-    public BlockFace getRight() {
-        return right;
+    @JsonIgnore
+    public Color getRight() {
+        return faces[RIGHT.getValue()];
     }
 
-    public void setRight(BlockFace right) {
-        this.right = right;
+    public void setRight(Color right) {
+        faces[RIGHT.getValue()] = right;
     }
 
-    public BlockFace getFront() {
-        return front;
+    @JsonIgnore
+    public Color getFront() {
+        return faces[FRONT.getValue()];
     }
 
-    public void setFront(BlockFace front) {
-        this.front = front;
+    public void setFront(Color front) {
+        faces[FRONT.getValue()] = front;
     }
 
-    public BlockFace getBack() {
-        return back;
+    @JsonIgnore
+    public Color getBack() {
+        return faces[BACK.getValue()];
     }
 
-    public void setBack(BlockFace back) {
-        this.back = back;
+    public void setBack(Color back) {
+        faces[BACK.getValue()] = back;
     }
 
     @Override
@@ -113,34 +132,20 @@ public class Block {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Block block = (Block) o;
-        return width == block.width &&
-                height == block.height &&
-                depth == block.depth &&
-                Objects.equals(top, block.top) &&
-                Objects.equals(bottom, block.bottom) &&
-                Objects.equals(left, block.left) &&
-                Objects.equals(right, block.right) &&
-                Objects.equals(front, block.front) &&
-                Objects.equals(back, block.back);
+        return dimensions == block.dimensions &&
+                Objects.equals(faces, block.faces);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(width, height, depth,  top, bottom, left, right, front, back);
+        return Objects.hash(dimensions, faces);
     }
 
     @Override
     public String toString() {
         return "Block{" +
-                "width=" + width +
-                ", height=" + height +
-                ", depth=" + depth +
-                ", top=" + top +
-                ", bottom=" + bottom +
-                ", left=" + left +
-                ", right=" + right +
-                ", front=" + front +
-                ", back=" + back +
+                "dimensions=" + dimensions +
+                ", faces=" + faces +
                 '}';
     }
 }

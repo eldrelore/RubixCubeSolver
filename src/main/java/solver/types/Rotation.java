@@ -1,6 +1,4 @@
 package solver.types;
-
-import solver.constants.CubeConstants;
 import solver.model.CubeRotation;
 
 import java.util.Random;

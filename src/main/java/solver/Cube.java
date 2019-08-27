@@ -3,7 +3,7 @@ package solver;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import solver.model.CubeRotation;
-import solver.types.BlockFace;
+import solver.types.Color;
 import solver.types.Rotation;
 
 import java.util.List;
@@ -14,11 +14,6 @@ import java.util.Map;
  * Reduces number of moves possible to rotations of right, top, and back (and any mids).
  */
 public interface Cube {
-    Integer MIN_HEIGHT = 0;
-    Integer MIN_WIDTH = 0;
-    Integer MIN_DEPTH = 0;
-
-
     Block[][][] initializeCube();
 
     Integer getSize();
@@ -29,7 +24,7 @@ public interface Cube {
 
     default void switchFaceForward(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        BlockFace frontFaceHolder = block.getFront();
+        Color frontFaceHolder = block.getFront();
         block.setFront(block.getTop());
         block.setTop(block.getBack());
         block.setBack(block.getBottom());
@@ -39,7 +34,7 @@ public interface Cube {
 
     default void switchFaceBackwards(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        BlockFace frontFaceHolder = block.getFront();
+        Color frontFaceHolder = block.getFront();
         block.setFront(block.getBottom());
         block.setBottom(block.getBack());
         block.setBack(block.getTop());
@@ -50,26 +45,24 @@ public interface Cube {
     default void rotateWidthForward(int width, Block[][][] cube, List<String> steps) {
         if (width > 0) {
             steps.add(Rotation.FORWARD.getDisplayString(width));
-            int maxDimension = getMaxDimension();
-            /* create holder for right top front and spin holder in place*/
-            Block tempBlock = cube[width][maxDimension][MIN_DEPTH];
-            switchFaceForward(tempBlock);
+            int length = getMaxDimension();
+            for (int y = 0; y <= length / 2; y++) {
+                for (int z = 0; z < length - y; z++) {
+                    Block holder = cube[width][y][z];
+                    switchFaceForward(holder);
 
-            /* right top front receives right top back ; rotate right top front block*/
-            cube[width][maxDimension][MIN_DEPTH] = cube[width][maxDimension][maxDimension];
-            switchFaceForward(cube[width][maxDimension][MIN_DEPTH]);
+                    cube[width][y][z] = cube[width][length - z][y];
+                    switchFaceForward(cube[width][y][z]);
 
+                    cube[width][length - z][y] = cube[width][length - y][length - z];
+                    switchFaceForward(cube[width][length - z][y]);
 
-            /* right top back receives right bottom back, rotate right top back block */
-            cube[width][maxDimension][maxDimension] = cube[width][MIN_HEIGHT][maxDimension];
-            switchFaceForward(cube[width][maxDimension][maxDimension]);
+                    cube[width][length - y][length - z] = cube[width][z][length - y];
+                    switchFaceForward(cube[width][length - y][length - z]);
 
-            /* right bottom back receives bottom right front; rotate right bottom  back block */
-            cube[width][MIN_HEIGHT][maxDimension] = cube[width][MIN_HEIGHT][MIN_DEPTH];
-            switchFaceForward(cube[width][MIN_HEIGHT][maxDimension]);
-
-            /* right bottom front receives holder; already rotated*/
-            cube[width][MIN_HEIGHT][MIN_DEPTH] = tempBlock;
+                    cube[width][z][length - y] = holder;
+                }
+            }
         } else {
             int size = getSize();
             for (int i = 1; i < size; i++) {
@@ -104,28 +97,24 @@ public interface Cube {
         if (width > 0) {
             steps.add(Rotation.BACKWARD.getDisplayString(width));
 
-            int maxDimension = getMaxDimension();
-            /* create holder for right top front and spin holder in place*/
-            Block tempBlock = cube[width][maxDimension][MIN_DEPTH];
-            switchFaceBackwards(tempBlock);
+            int length = getMaxDimension();
+            for (int y = 0; y <= length / 2; y++) {
+                for (int z = 0; z < length - y; z++) {
+                    Block holder = cube[width][y][z];
+                    switchFaceBackwards(holder);
 
-            /* right top front receives right bottom front ; rotate right top front block*/
-            cube[width][maxDimension][MIN_DEPTH] = cube[width][MIN_HEIGHT][MIN_DEPTH];
-            switchFaceBackwards(cube[width][maxDimension][MIN_DEPTH]);
+                    cube[width][y][z] = cube[width][z][length - y];
+                    switchFaceBackwards(cube[width][y][z]);
 
+                    cube[width][z][length - y] = cube[width][length - y][length - z];
+                    switchFaceBackwards(cube[width][z][length - y]);
 
-            /* right bottom front receives right bottom back, rotate right bottom front block */
-            cube[width][MIN_HEIGHT][MIN_DEPTH] = cube[width][MIN_HEIGHT][maxDimension];
-            switchFaceBackwards(cube[width][MIN_HEIGHT][MIN_DEPTH]);
+                    cube[width][length - y][length - z] = cube[width][length - z][y];
+                    switchFaceBackwards(cube[width][length - y][length - z]);
 
-            /* right bottom back receives right top back; rotate right bottom back block */
-            cube[width][MIN_HEIGHT][maxDimension] = cube[width][maxDimension][maxDimension];
-            switchFaceBackwards(cube[width][MIN_HEIGHT][maxDimension]);
-
-
-            /* right top back receives holder; already rotated*/
-            cube[width][maxDimension][maxDimension] = tempBlock;
-
+                    cube[width][length - z][y] = holder;
+                }
+            }
         } else {
             int size = getSize();
             for (int i = 1; i < size; i++) {
@@ -146,7 +135,7 @@ public interface Cube {
 
     default void switchFaceLeft(Block block) {
         /* change facing: front becomes left, right becomes front,  back becomes right, left becomes back */
-        BlockFace leftBlockFaceHolder = block.getLeft();
+        Color leftBlockFaceHolder = block.getLeft();
         block.setLeft(block.getFront());
         block.setFront(block.getRight());
         block.setRight(block.getBack());
@@ -155,7 +144,7 @@ public interface Cube {
 
     default void switchFaceRight(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        BlockFace frontFaceHolder = block.getFront();
+        Color frontFaceHolder = block.getFront();
         block.setFront(block.getLeft());
         block.setLeft(block.getBack());
         block.setBack(block.getRight());
@@ -166,26 +155,24 @@ public interface Cube {
     default void rotateHeightLeft(int height, Block[][][] cube, List<String> steps) {
         if (height > 0) {
             steps.add(Rotation.LEFT.getDisplayString(height));
+            int length = getMaxDimension();
+            for (int x = 0; x <= length / 2; x++) {
+                for (int z = 0; z < length - x; z++) {
+                    Block holder = cube[x][height][z];
+                    switchFaceLeft(holder);
 
-            /* create holder for  left top front and spin holder in place*/
-            Block tempBlock = cube[MIN_WIDTH][height][MIN_DEPTH];
-            switchFaceLeft(tempBlock);
-            int maxDimension = getMaxDimension();
+                    cube[x][height][z] = cube[length - z][height][x];
+                    switchFaceLeft(cube[x][height][z]);
 
-            /* left top front receives right top front ; rotate left top front block*/
-            cube[MIN_WIDTH][height][MIN_DEPTH] = cube[getMaxDimension()][height][MIN_DEPTH];
-            switchFaceLeft(cube[MIN_WIDTH][height][MIN_DEPTH]);
+                    cube[length - z][height][x] = cube[length - x][height][length - z];
+                    switchFaceLeft(cube[length - z][height][x]);
 
-            /* top right front receives right top back, rotate right top front block */
-            cube[maxDimension][height][MIN_DEPTH] = cube[maxDimension][height][maxDimension];
-            switchFaceLeft(cube[maxDimension][height][MIN_DEPTH]);
+                    cube[length - x][height][length - z] = cube[z][height][length - x];
+                    switchFaceLeft(cube[length - x][height][length - z]);
 
-            /* right top back receives left top back; rotate right top back block */
-            cube[maxDimension][height][maxDimension] = cube[MIN_WIDTH][height][maxDimension];
-            switchFaceLeft(cube[maxDimension][height][maxDimension]);
-
-            /* right top back receives holder; already rotated*/
-            cube[MIN_WIDTH][height][maxDimension] = tempBlock;
+                    cube[z][height][length - x] = holder;
+                }
+            }
         } else {
             int size = getSize();
             for (int i = 1; i < size; i++) {
@@ -197,27 +184,24 @@ public interface Cube {
     default void rotateHeightRight(int height, Block[][][] cube, List<String> steps) {
         if (height > 0) {
             steps.add(Rotation.RIGHT.getDisplayString(height));
+            int length = getMaxDimension();
+            for (int x = 0; x <= length / 2; x++) {
+                for (int z = 0; z < length - x; z++) {
+                    Block holder = cube[x][height][z];
+                    switchFaceRight(holder);
 
-            int maxDimension = getMaxDimension();
-            /* create holder for right top front and spin holder in place*/
-            Block tempBlock = cube[maxDimension][height][MIN_DEPTH];
-            switchFaceRight(tempBlock);
+                    cube[x][height][z] = cube[z][height][length - x];
+                    switchFaceRight(cube[x][height][z]);
 
-            /* right top front receives left top front ; rotate right top front block*/
-            cube[maxDimension][height][MIN_DEPTH] = cube[MIN_WIDTH][height][MIN_DEPTH];
-            switchFaceRight(cube[maxDimension][height][MIN_DEPTH]);
+                    cube[z][height][length - x] = cube[length - x][height][length - z];
+                    switchFaceRight(cube[z][height][length - x]);
 
+                    cube[length - x][height][length - z] = cube[length - z][height][x];
+                    switchFaceRight(cube[length - x][height][length - z]);
 
-            /* left top front receives left top back, rotate left top front block */
-            cube[MIN_WIDTH][height][MIN_DEPTH] = cube[0][height][maxDimension];
-            switchFaceRight(cube[MIN_WIDTH][height][MIN_DEPTH]);
-
-            /* left top back receives right top front; rotate left top back block */
-            cube[MIN_WIDTH][height][maxDimension] = cube[1][height][maxDimension];
-            switchFaceRight(cube[MIN_WIDTH][height][maxDimension]);
-
-            /* right top back receives holder; already rotated*/
-            cube[maxDimension][height][maxDimension] = tempBlock;
+                    cube[length - z][height][x] = holder;
+                }
+            }
         } else {
             int size = getSize();
             for (int i = 1; i < size; i++) {
@@ -229,7 +213,7 @@ public interface Cube {
 
     default void switchFaceClockwise(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        BlockFace topFaceHolder = block.getTop();
+        Color topFaceHolder = block.getTop();
         block.setTop(block.getLeft());
         block.setLeft(block.getBottom());
         block.setBottom(block.getRight());
@@ -239,7 +223,7 @@ public interface Cube {
 
     default void switchFaceCounterClockwise(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        BlockFace topFaceHolder = block.getTop();
+        Color topFaceHolder = block.getTop();
         block.setTop(block.getRight());
         block.setRight(block.getBottom());
         block.setBottom(block.getLeft());
@@ -249,27 +233,24 @@ public interface Cube {
     default void rotateDepthClockwise(int depth, Block[][][] cube, List<String> steps) {
         if (depth > 0) {
             steps.add(Rotation.CLOCKWISE.getDisplayString(depth));
-            int maxDimension = getMaxDimension();
-            /* create holder for right top back and spin holder in place*/
-            Block tempBlock = cube[maxDimension][maxDimension][depth];
-            switchFaceClockwise(tempBlock);
+            int length = getMaxDimension();
+            for (int x = 0; x <= length / 2; x++) {
+                for (int y = 0; y < length - x; y++) {
+                    Block holder = cube[x][y][depth];
+                    switchFaceClockwise(holder);
 
-            /* right top back receives left top back ; rotate right top back block*/
-            cube[maxDimension][maxDimension][depth] = cube[MIN_WIDTH][maxDimension][depth];
-            switchFaceClockwise(cube[maxDimension][maxDimension][depth]);
+                    cube[x][y][depth] = cube[length - y][x][depth];
+                    switchFaceClockwise(cube[x][y][depth]);
 
+                    cube[length - y][x][depth] = cube[length - x][length - y][depth];
+                    switchFaceClockwise(cube[length - y][x][depth]);
 
-            /* left top back receives left bottom back, rotate left top back block */
-            cube[MIN_WIDTH][maxDimension][depth] = cube[MIN_WIDTH][MIN_HEIGHT][depth];
-            switchFaceClockwise(cube[MIN_WIDTH][maxDimension][depth]);
+                    cube[length - x][length - y][depth] = cube[y][length - x][depth];
+                    switchFaceClockwise(cube[length - x][length - y][depth]);
 
-            /* left bottom back receives right bottom back; rotate left bottom back block */
-            cube[MIN_WIDTH][MIN_HEIGHT][depth] = cube[maxDimension][MIN_HEIGHT][depth];
-            switchFaceClockwise(cube[MIN_WIDTH][MIN_HEIGHT][depth]);
-
-            /* right bottom back receives holder; already rotated*/
-            cube[maxDimension][MIN_HEIGHT][depth] = tempBlock;
-
+                    cube[y][length - x][depth] = holder;
+                }
+            }
         } else {
             int size = getSize();
             for (int i = 1; i < size; i++) {
@@ -282,39 +263,30 @@ public interface Cube {
     default void rotateDepthCounterClockwise(int depth, Block[][][] cube, List<String> steps) {
         if (depth > 0) {
             steps.add(Rotation.COUNTER_CLOCKWISE.getDisplayString(depth));
+            int length = getMaxDimension();
+            for (int x = 0; x <= length / 2; x++) {
+                for (int y = 0; y < length - x; y++) {
+                    Block holder = cube[x][y][depth];
+                    switchFaceCounterClockwise(holder);
 
-            int maxDimension = getMaxDimension();
-            /* create holder for  right top back and spin holder in place*/
-            Block tempBlock = cube[maxDimension][maxDimension][depth];
-            switchFaceCounterClockwise(tempBlock);
+                    cube[x][y][depth] = cube[y][length - x][depth];
+                    switchFaceCounterClockwise(cube[x][y][depth]);
 
-            /* right top front receives left top front ; rotate right top front block*/
-            cube[maxDimension][maxDimension][depth] = cube[maxDimension][MIN_HEIGHT][depth];
-            switchFaceCounterClockwise(cube[maxDimension][maxDimension][depth]);
+                    cube[y][length - x][depth] = cube[length - x][length - y][depth];
+                    switchFaceCounterClockwise(cube[y][length - x][depth]);
 
+                    cube[length - x][length - y][depth] = cube[length - y][x][depth];
+                    switchFaceCounterClockwise(cube[length - x][length - y][depth]);
 
-            /* top left front receives right top back, rotate left top front block */
-            cube[maxDimension][MIN_HEIGHT][depth] = cube[MIN_WIDTH][MIN_HEIGHT][depth];
-            switchFaceCounterClockwise(cube[maxDimension][MIN_HEIGHT][depth]);
-
-            /* right top back receives right top front; rotate right top back block */
-            cube[MIN_WIDTH][MIN_HEIGHT][depth] = cube[MIN_WIDTH][maxDimension][depth];
-            switchFaceCounterClockwise(cube[MIN_WIDTH][MIN_HEIGHT][depth]);
-
-            /* right top back receives holder; already rotated*/
-            cube[MIN_WIDTH][maxDimension][depth] = tempBlock;
-
+                    cube[length - y][x][depth] = holder;
+                }
+            }
         } else {
             int size = getSize();
             for (int i = 1; i < size; i++) {
                 rotateDepthClockwise(i, cube, steps);
             }
         }
-    }
-
-    default void setBlock(Block block) {
-        Block[][][] blocks = initializeCube();
-        blocks[block.getWidth()][block.getHeight()][block.getDepth()] = block;
     }
 
     ObjectMapper MAPPER = new ObjectMapper();

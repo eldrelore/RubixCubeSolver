@@ -1,7 +1,6 @@
 package solver;
 
-import solver.types.FaceColor;
-import solver.types.BlockFace;
+import solver.types.Color;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,9 +16,9 @@ public class OneCube implements Cube {
     @Override
     public Block[][][] initializeCube() {
         Block block = new Block(0, 0, 0,
-                new BlockFace(FaceColor.BLUE), new BlockFace(FaceColor.GREEN),
-                new BlockFace(FaceColor.ORANGE), new BlockFace(FaceColor.RED),
-                new BlockFace(FaceColor.YELLOW), new BlockFace(FaceColor.WHITE));
+                new Color[]{Color.BLUE, Color.GREEN,
+                        Color.ORANGE, Color.RED,
+                        Color.YELLOW, Color.WHITE});
         cube = new Block[1][1][1];
         cube[0][0][0] = block;
         return cube;
