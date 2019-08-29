@@ -2,7 +2,6 @@ package solver;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
 import solver.model.CubeRotation;
 import solver.types.*;
@@ -22,9 +21,7 @@ public class TwoCube implements Cube {
     public TwoCube() {
 
     }
-
     private static final Integer SIZE = 2;
-    private static final String WORKING_DIRECTORY = "src/test/resources/working";
 
     @Override
     public Block[][][] initializeCube() {
@@ -55,45 +52,45 @@ public class TwoCube implements Cube {
                         Color.DEFAULT});
 
         Block topRightFrontBlock = new Block(1, 1, 0,
-                new Color[]{ Color.BLUE,
-                Color.DEFAULT,
-                Color.DEFAULT,
-                Color.RED,
-                Color.WHITE,
-                Color.DEFAULT});
+                new Color[]{Color.BLUE,
+                        Color.DEFAULT,
+                        Color.DEFAULT,
+                        Color.RED,
+                        Color.WHITE,
+                        Color.DEFAULT});
 
 
         Block bottomLeftBackBlock = new Block(0, 0, 1,
-                new Color[]{ Color.DEFAULT,
-                Color.GREEN,
-                Color.ORANGE,
-                Color.DEFAULT,
-                Color.DEFAULT,
-                Color.YELLOW});
+                new Color[]{Color.DEFAULT,
+                        Color.GREEN,
+                        Color.ORANGE,
+                        Color.DEFAULT,
+                        Color.DEFAULT,
+                        Color.YELLOW});
 
         Block bottomRightBackBlock = new Block(1, 0, 1,
-                new Color[]{ Color.DEFAULT,
-                Color.GREEN,
-                Color.DEFAULT,
-                Color.RED,
-                Color.DEFAULT,
-                Color.YELLOW});
+                new Color[]{Color.DEFAULT,
+                        Color.GREEN,
+                        Color.DEFAULT,
+                        Color.RED,
+                        Color.DEFAULT,
+                        Color.YELLOW});
 
         Block topLeftBackBlock = new Block(0, 1, 1,
-                new Color[]{  Color.BLUE,
-                Color.DEFAULT,
-                Color.ORANGE,
-                Color.DEFAULT,
-                Color.DEFAULT,
-                Color.YELLOW});
+                new Color[]{Color.BLUE,
+                        Color.DEFAULT,
+                        Color.ORANGE,
+                        Color.DEFAULT,
+                        Color.DEFAULT,
+                        Color.YELLOW});
 
         Block topRightBackBlock = new Block(1, 1, 1,
-                new Color[]{ Color.BLUE,
-                Color.DEFAULT,
-                Color.DEFAULT,
-                Color.RED,
-                Color.DEFAULT,
-                Color.YELLOW});
+                new Color[]{Color.BLUE,
+                        Color.DEFAULT,
+                        Color.DEFAULT,
+                        Color.RED,
+                        Color.DEFAULT,
+                        Color.YELLOW});
 
         blocks.add(bottomLeftFrontBlock);
         blocks.add(bottomRightFrontBlock);
@@ -113,15 +110,6 @@ public class TwoCube implements Cube {
     }
 
 
-    public Block[][][] initializeCubeFromDescriptor(String descriptor) {
-        Block[][][] blockArray = new Block[getSize()][getSize()][getSize()];
-        try {
-            blockArray = MAPPER.readValue(descriptor, blockArray.getClass());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return blockArray;
-    }
 
 
     public Integer getSize() {
@@ -256,8 +244,9 @@ public class TwoCube implements Cube {
                 movementFinishedTime = System.currentTimeMillis();
                 Long movementDuration = movementFinishedTime - movementStartTime;
                 movementStartTime = movementFinishedTime;
-                Long totalDuration = movementFinishedTime - startTime;
-                System.out.println("Movement: " + numberOfMovements + " states per movement: " + currentMovementStates + " known states: " + knownStates + " duration: " + movementDuration + " total states attempted: " + totalAttempts + " total duration: " + totalDuration);
+                Double totalDuration = ((movementFinishedTime * 1.0) - startTime) / 1000;
+                String duationSeconds = String.format("%.4f", totalDuration);
+                System.out.println("Movement: " + numberOfMovements + " states per movement: " + currentMovementStates + " known states: " + knownStates + " duration: " + movementDuration + " total states attempted: " + totalAttempts + " total duration: " + duationSeconds + " seconds.");
                 numberOfMovements++;
                 priorFileExists = new File(currentFileName).exists();
             }
@@ -414,7 +403,7 @@ public class TwoCube implements Cube {
         return content;
     }
 
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+
 
     public SolutionSteps readSolutionsFromFile(String filename, String descriptor) {
         AtomicReference<SolutionSteps> steps = new AtomicReference<>(new SolutionSteps());

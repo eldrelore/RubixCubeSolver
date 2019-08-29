@@ -6,6 +6,7 @@ import solver.model.CubeRotation;
 import solver.types.Color;
 import solver.types.Rotation;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,10 @@ public interface Cube {
     SolutionSteps solve(String solutionFileName, String descriptor);
 
     Map<Integer, SolutionSteps> generateStates(Integer max);
+
+    ObjectMapper MAPPER = new ObjectMapper();
+    String WORKING_DIRECTORY = "src/test/resources/working";
+
 
     default void switchFaceForward(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
@@ -86,13 +91,6 @@ public interface Cube {
         }
     }
 
-    default void setBlockWidthHeightDepth(Block block, int width, int height, int depth) {
-        block.setWidth(width);
-        block.setHeight(height);
-        block.setDepth(depth);
-    }
-
-
     default void rotateWidthBackward(int width, Block[][][] cube, List<String> steps) {
         if (width > 0) {
             steps.add(Rotation.BACKWARD.getDisplayString(width));
@@ -122,12 +120,6 @@ public interface Cube {
             }
         }
     }
-
-
-    /* TODO No middles, all corners.  This should be extractable to a more generic way of rotating.
-       Haven't bothered (yet) to do the math or search for it.
-       I figure I'll get it working, and then see if it needs optimization.
-       */
 
     default Integer getMaxDimension() {
         return getSize() - 1;
@@ -213,21 +205,21 @@ public interface Cube {
 
     default void switchFaceClockwise(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        Color topFaceHolder = block.getTop();
+        Color holder = block.getTop();
         block.setTop(block.getLeft());
         block.setLeft(block.getBottom());
         block.setBottom(block.getRight());
-        block.setRight(topFaceHolder);
+        block.setRight(holder);
     }
 
 
     default void switchFaceCounterClockwise(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        Color topFaceHolder = block.getTop();
+        Color holder = block.getTop();
         block.setTop(block.getRight());
         block.setRight(block.getBottom());
         block.setBottom(block.getLeft());
-        block.setLeft(topFaceHolder);
+        block.setLeft(holder);
     }
 
     default void rotateDepthClockwise(int depth, Block[][][] cube, List<String> steps) {
@@ -289,13 +281,9 @@ public interface Cube {
         }
     }
 
-    ObjectMapper MAPPER = new ObjectMapper();
 
     default String getDescriptor(Block[][][] blocks) {
         /* create a descriptor for the cube (for x, y, z; non default faces, and sides) */
-        StringBuilder sb = new StringBuilder();
-        int size = getSize();
-
         String cubeDescriptor = null;
         try {
             cubeDescriptor = MAPPER.writeValueAsString(blocks);
@@ -310,5 +298,16 @@ public interface Cube {
         solutionSteps.setDescriptor(getDescriptor(cubeRotation.getBlockArray()));
         solutionSteps.setSteps(cubeRotation.getSteps());
         return solutionSteps;
+    }
+
+
+    default Block[][][] initializeCubeFromDescriptor(String descriptor) {
+        Block[][][] blockArray = new Block[getSize()][getSize()][getSize()];
+        try {
+            blockArray = MAPPER.readValue(descriptor, blockArray.getClass());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return blockArray;
     }
 }

@@ -62,7 +62,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
@@ -76,21 +76,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -135,7 +135,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.RED, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
@@ -149,21 +149,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.YELLOW, block.getRight());
                         Assert.assertEquals(Color.RED, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.WHITE, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.ORANGE, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -208,7 +208,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.ORANGE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
@@ -222,21 +222,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.WHITE, block.getRight());
                         Assert.assertEquals(Color.ORANGE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.YELLOW, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.RED, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -281,7 +281,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.ORANGE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
@@ -295,21 +295,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.WHITE, block.getRight());
                         Assert.assertEquals(Color.ORANGE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.YELLOW, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.RED, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -353,7 +353,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.RED, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
@@ -367,21 +367,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.YELLOW, block.getRight());
                         Assert.assertEquals(Color.RED, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.WHITE, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.ORANGE, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -426,7 +426,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
@@ -440,21 +440,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.BLUE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.WHITE, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.GREEN, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.YELLOW, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -498,7 +498,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
@@ -512,21 +512,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.GREEN, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.YELLOW, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.BLUE, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.WHITE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -571,7 +571,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
@@ -585,21 +585,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.GREEN, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.YELLOW, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.BLUE, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.WHITE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -644,7 +644,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.GREEN, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
@@ -658,21 +658,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.BLUE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.WHITE, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.GREEN, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.BLUE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.ORANGE, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.YELLOW, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -716,7 +716,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.RED, block.getBottom());
                         Assert.assertEquals(Color.GREEN, block.getLeft());
@@ -730,21 +730,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.RED, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.BLUE, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.ORANGE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.GREEN, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.ORANGE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -788,7 +788,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.ORANGE, block.getBottom());
                         Assert.assertEquals(Color.BLUE, block.getLeft());
@@ -802,21 +802,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.ORANGE, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.GREEN, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.RED, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.BLUE, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.RED, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -860,7 +860,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.ORANGE, block.getBottom());
                         Assert.assertEquals(Color.BLUE, block.getLeft());
@@ -874,21 +874,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.ORANGE, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.GREEN, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.RED, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.BLUE, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.RED, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -933,7 +933,7 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (0 == x && 0 == y && 1 == z) {
+                    } else if (0 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.RED, block.getBottom());
                         Assert.assertEquals(Color.GREEN, block.getLeft());
@@ -947,21 +947,21 @@ public class RubixCubeTwoByBlockTest {
                         Assert.assertEquals(Color.RED, block.getRight());
                         Assert.assertEquals(Color.WHITE, block.getFront());
                         Assert.assertEquals(Color.DEFAULT, block.getBack());
-                    } else if (1 == x && 0 == y && 1 == z) {
+                    } else if (1 == x && 0 == y) {
                         Assert.assertEquals(Color.DEFAULT, block.getTop());
                         Assert.assertEquals(Color.RED, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
                         Assert.assertEquals(Color.BLUE, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (0 == x && 1 == y && 1 == z) {
+                    } else if (0 == x) {
                         Assert.assertEquals(Color.ORANGE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.GREEN, block.getLeft());
                         Assert.assertEquals(Color.DEFAULT, block.getRight());
                         Assert.assertEquals(Color.DEFAULT, block.getFront());
                         Assert.assertEquals(Color.YELLOW, block.getBack());
-                    } else if (1 == x && 1 == y && 1 == z) {
+                    } else {
                         Assert.assertEquals(Color.ORANGE, block.getTop());
                         Assert.assertEquals(Color.DEFAULT, block.getBottom());
                         Assert.assertEquals(Color.DEFAULT, block.getLeft());
@@ -990,7 +990,7 @@ public class RubixCubeTwoByBlockTest {
     public void testInitializeCubeFromDescriptor() {
         Block[][][] initializedBlockArray = cube.initializeCube();
         String initializedCubeDescriptor = cube.getDescriptor(initializedBlockArray);
-        Block[][][] blockArrayFromDescriptor = ((TwoCube) cube).initializeCubeFromDescriptor(initializedCubeDescriptor);
+        Block[][][] blockArrayFromDescriptor = cube.initializeCubeFromDescriptor(initializedCubeDescriptor);
         Assert.assertNotNull(blockArrayFromDescriptor);
         int size = initializedBlockArray.length;
         for (int x = 0; x < size; x++) {
@@ -1021,7 +1021,6 @@ public class RubixCubeTwoByBlockTest {
     public void testGenerateOneMovement() {
         Map<Integer, SolutionSteps> solutions = cube.generateStates(1);
         Assert.assertNotNull(solutions);
-        int solutionSize = solutions.size();
         Assert.assertEquals(7, solutions.size());
         int zeroMovementCounter = 0;
         int expectedZeroMotionCounters = 1;
@@ -1327,12 +1326,10 @@ public class RubixCubeTwoByBlockTest {
 
 
     /* These two are more integration / validation, one generates all the states, the other checks a known state & its solution */
-    @Test
+//    @Test
     public void testGenerateStates() {
         Map<Integer, SolutionSteps> solutions = cube.generateStates(null);
         Assert.assertNotNull(solutions);
-        int solutionSize = solutions.size();
-
         int trueCounter = 0;
         for (Integer descriptorHash : solutions.keySet()) {
             SolutionSteps steps = solutions.get(descriptorHash);
@@ -1344,7 +1341,7 @@ public class RubixCubeTwoByBlockTest {
         Assert.assertEquals(1, trueCounter);
     }
 
-//    @Test
+//        @Test
     public void testSolve() {
         String solutionFile = "TwoByTwoCubeSolutions.txt";
         Block[][][] mixedUpBlocks = getMixedUpBlocks();
