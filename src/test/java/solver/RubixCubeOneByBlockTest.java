@@ -31,12 +31,12 @@ public class RubixCubeOneByBlockTest {
             make sure it has all the right faces (and type)*/
         Block[][][] blocks = cube.initializeCube();
         Block block = blocks[0][0][0];
-        Assert.assertEquals(Color.BLUE, block.getTop());
-        Assert.assertEquals(Color.GREEN, block.getBottom());
-        Assert.assertEquals(Color.ORANGE, block.getLeft());
-        Assert.assertEquals(Color.RED, block.getRight());
-        Assert.assertEquals(Color.YELLOW, block.getFront());
-        Assert.assertEquals(Color.WHITE, block.getBack());
+        Assert.assertEquals(Color.BLUE.getValue(), block.getTop());
+        Assert.assertEquals(Color.GREEN.getValue(), block.getBottom());
+        Assert.assertEquals(Color.ORANGE.getValue(), block.getLeft());
+        Assert.assertEquals(Color.RED.getValue(), block.getRight());
+        Assert.assertEquals(Color.YELLOW.getValue(), block.getFront());
+        Assert.assertEquals(Color.WHITE.getValue(), block.getBack());
     }
 
     @Test
