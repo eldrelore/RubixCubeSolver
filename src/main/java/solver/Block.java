@@ -4,14 +4,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import solver.types.BlockFace;
 import solver.types.Color;
 
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 
 import static solver.types.BlockFace.*;
 import static solver.types.Dimensions.*;
 
-public class Block {
+public class Block implements Serializable {
 
-    private Color[] faces = new Color[6];
+    private int[] faces = new int[6];
     private int[] dimensions = new int[3];
 
     public int[] getDimensions() {
@@ -22,18 +25,17 @@ public class Block {
         this.dimensions = dimensions;
     }
 
-
-    public Color[] getFaces() {
+    public int[] getFaces() {
         return faces;
     }
 
-    public void setFaces(Color[] faces) {
+    public void setFaces(int[] faces) {
         this.faces = faces;
     }
 
 
     public Block(int currentWidth, int currentHeight, int currentDepth,
-                 Color[] currentFaces) {
+                 int[] currentFaces) {
         setWidth(currentWidth);
         setHeight(currentHeight);
         setDepth(currentDepth);
@@ -74,56 +76,56 @@ public class Block {
     }
 
     @JsonIgnore
-    public Color getTop() {
+    public int getTop() {
         return faces[TOP.getValue()];
     }
 
-    public void setTop(Color top) {
+    public void setTop(int top) {
         faces[TOP.getValue()] = top;
     }
 
     @JsonIgnore
-    public Color getBottom() {
+    public int getBottom() {
         return faces[BOTTOM.getValue()];
     }
 
-    public void setBottom(Color bottom) {
+    public void setBottom(int bottom) {
         faces[BOTTOM.getValue()] = bottom;
     }
 
     @JsonIgnore
-    public Color getLeft() {
+    public int getLeft() {
         return faces[LEFT.getValue()];
     }
 
-    public void setLeft(Color left) {
+    public void setLeft(int left) {
         faces[LEFT.getValue()] = left;
     }
 
     @JsonIgnore
-    public Color getRight() {
+    public int getRight() {
         return faces[RIGHT.getValue()];
     }
 
-    public void setRight(Color right) {
+    public void setRight(int right) {
         faces[RIGHT.getValue()] = right;
     }
 
     @JsonIgnore
-    public Color getFront() {
+    public int getFront() {
         return faces[FRONT.getValue()];
     }
 
-    public void setFront(Color front) {
+    public void setFront(int front) {
         faces[FRONT.getValue()] = front;
     }
 
     @JsonIgnore
-    public Color getBack() {
+    public int getBack() {
         return faces[BACK.getValue()];
     }
 
-    public void setBack(Color back) {
+    public void setBack(int back) {
         faces[BACK.getValue()] = back;
     }
 
@@ -138,7 +140,7 @@ public class Block {
 
     @Override
     public int hashCode() {
-        return Objects.hash(dimensions, faces);
+        return Arrays.hashCode(faces) * 13 + Arrays.hashCode(dimensions) * 31;
     }
 
     @Override

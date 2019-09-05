@@ -3,6 +3,7 @@ package solver;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.commons.io.FileUtils;
+import org.nustaq.serialization.FSTConfiguration;
 import solver.model.CubeRotation;
 import solver.types.*;
 
@@ -13,6 +14,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -21,6 +23,7 @@ public class TwoCube implements Cube {
     public TwoCube() {
 
     }
+
     private static final Integer SIZE = 2;
 
     @Override
@@ -28,69 +31,69 @@ public class TwoCube implements Cube {
         Block[][][] cube = new Block[SIZE][SIZE][SIZE];
         List<Block> blocks = new ArrayList<>();
         Block bottomLeftFrontBlock = new Block(0, 0, 0,
-                new Color[]{Color.DEFAULT,
-                        Color.GREEN,
-                        Color.ORANGE,
-                        Color.DEFAULT,
-                        Color.WHITE,
-                        Color.DEFAULT});
+                new int[]{Color.DEFAULT.getValue(),
+                        Color.GREEN.getValue(),
+                        Color.ORANGE.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.WHITE.getValue(),
+                        Color.DEFAULT.getValue()});
 
         Block bottomRightFrontBlock = new Block(1, 0, 0,
-                new Color[]{Color.DEFAULT,
-                        Color.GREEN,
-                        Color.DEFAULT,
-                        Color.RED,
-                        Color.WHITE,
-                        Color.DEFAULT});
+                new int[]{Color.DEFAULT.getValue(),
+                        Color.GREEN.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.RED.getValue(),
+                        Color.WHITE.getValue(),
+                        Color.DEFAULT.getValue()});
 
         Block topLeftFrontBlock = new Block(0, 1, 0,
-                new Color[]{Color.BLUE,
-                        Color.DEFAULT,
-                        Color.ORANGE,
-                        Color.DEFAULT,
-                        Color.WHITE,
-                        Color.DEFAULT});
+                new int[]{Color.BLUE.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.ORANGE.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.WHITE.getValue(),
+                        Color.DEFAULT.getValue()});
 
         Block topRightFrontBlock = new Block(1, 1, 0,
-                new Color[]{Color.BLUE,
-                        Color.DEFAULT,
-                        Color.DEFAULT,
-                        Color.RED,
-                        Color.WHITE,
-                        Color.DEFAULT});
+                new int[]{Color.BLUE.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.RED.getValue(),
+                        Color.WHITE.getValue(),
+                        Color.DEFAULT.getValue()});
 
 
         Block bottomLeftBackBlock = new Block(0, 0, 1,
-                new Color[]{Color.DEFAULT,
-                        Color.GREEN,
-                        Color.ORANGE,
-                        Color.DEFAULT,
-                        Color.DEFAULT,
-                        Color.YELLOW});
+                new int[]{Color.DEFAULT.getValue(),
+                        Color.GREEN.getValue(),
+                        Color.ORANGE.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.YELLOW.getValue()});
 
         Block bottomRightBackBlock = new Block(1, 0, 1,
-                new Color[]{Color.DEFAULT,
-                        Color.GREEN,
-                        Color.DEFAULT,
-                        Color.RED,
-                        Color.DEFAULT,
-                        Color.YELLOW});
+                new int[]{Color.DEFAULT.getValue(),
+                        Color.GREEN.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.RED.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.YELLOW.getValue()});
 
         Block topLeftBackBlock = new Block(0, 1, 1,
-                new Color[]{Color.BLUE,
-                        Color.DEFAULT,
-                        Color.ORANGE,
-                        Color.DEFAULT,
-                        Color.DEFAULT,
-                        Color.YELLOW});
+                new int[]{Color.BLUE.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.ORANGE.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.YELLOW.getValue()});
 
         Block topRightBackBlock = new Block(1, 1, 1,
-                new Color[]{Color.BLUE,
-                        Color.DEFAULT,
-                        Color.DEFAULT,
-                        Color.RED,
-                        Color.DEFAULT,
-                        Color.YELLOW});
+                new int[]{Color.BLUE.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.RED.getValue(),
+                        Color.DEFAULT.getValue(),
+                        Color.YELLOW.getValue()});
 
         blocks.add(bottomLeftFrontBlock);
         blocks.add(bottomRightFrontBlock);
@@ -108,8 +111,6 @@ public class TwoCube implements Cube {
         }
         return cube;
     }
-
-
 
 
     public Integer getSize() {
@@ -194,9 +195,16 @@ public class TwoCube implements Cube {
          *
          *
          */
-        /* remove all entries from src/test/resources */
         cleanupOrCreateDirectory(WORKING_DIRECTORY);
-        Map<Integer, SolutionSteps> storedStates = new HashMap<>();
+        /* remove all entries from src/test/resources */
+        String solutionFileName = "TwoByTwoCubeSolutions.txt";
+        File file = new File(RESOURCE_DIRECTORY + "/" + solutionFileName);
+        if (file.exists()) {
+            file.delete();
+        }
+        /* TODO, move this down to the loop.  Have a separate map for checking whether each solution has been found. */
+        /* clear out the solutions file first.  Then append to it inside loop.*/
+        Map<Integer, Boolean> alreadyFoundStates = new HashMap<>();
         AtomicInteger totalAttempts = new AtomicInteger();
         AtomicInteger knownStates = new AtomicInteger();
         Long startTime = System.currentTimeMillis();
@@ -207,7 +215,11 @@ public class TwoCube implements Cube {
         String currentFileName = getFileName(numberOfMovements);
         CubeRotation initialCubeRotation = new CubeRotation(0, initializeCube, new ArrayList<String>());
         SolutionSteps currentState = getCurrentState(initialCubeRotation);
-        storedStates.put(currentState.getDescriptor().hashCode(), currentState);
+        Map<Integer, SolutionSteps> initialState = new HashMap<>();
+        Integer initialHashCode = currentState.getDescriptor().hashCode();
+        initialState.put(currentState.getDescriptor().hashCode(), currentState);
+        alreadyFoundStates.put(initialHashCode, true);
+        appendSolutionsToFile(initialState, solutionFileName);
 
         /* write output for this generation */
         appendToFile(currentFileName, currentState);
@@ -218,29 +230,12 @@ public class TwoCube implements Cube {
 
             Long movementFinishedTime = System.currentTimeMillis();
             boolean priorFileExists = new File(priorFileName).exists();
+
             /* now read the prior counter for the initial values */
             while (priorFileExists && ((null == max) || numberOfMovements <= max)) {
-
-
                 currentFileName = getFileName(numberOfMovements);
-
-            /* for each previously generated state, make every possible change to it.
-            Check to see if they're new states.  If they are, add them.
-            If not, don't.*/
-                priorFileName = getFileName(numberOfMovements - 1);
-
-                /* read all the strings out of the prior file */
                 AtomicInteger currentMovementStates = new AtomicInteger();
-                try (BufferedReader br = new BufferedReader(new FileReader(priorFileName))) {
-                    for (String line; (line = br.readLine()) != null; ) {
-                        SolutionSteps priorMovementState = MAPPER.readValue(line, SolutionSteps.class);
-                        generateAllCubeRotationsFromState(priorMovementState, currentFileName, storedStates, totalAttempts, currentMovementStates, knownStates);
-                    }
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                Map<Integer, SolutionSteps> storedStates = generateIterationStates(numberOfMovements, alreadyFoundStates, totalAttempts, currentMovementStates, knownStates);
                 movementFinishedTime = System.currentTimeMillis();
                 Long movementDuration = movementFinishedTime - movementStartTime;
                 movementStartTime = movementFinishedTime;
@@ -248,9 +243,33 @@ public class TwoCube implements Cube {
                 String duationSeconds = String.format("%.4f", totalDuration);
                 System.out.println("Movement: " + numberOfMovements + " states per movement: " + currentMovementStates + " known states: " + knownStates + " duration: " + movementDuration + " total states attempted: " + totalAttempts + " total duration: " + duationSeconds + " seconds.");
                 numberOfMovements++;
+
                 priorFileExists = new File(currentFileName).exists();
+                appendSolutionsToFile(storedStates, solutionFileName);
             }
-            writeSolutionsToFile(storedStates, "TwoByTwoCubeSolutions_" + System.currentTimeMillis() + ".txt");
+        }
+        alreadyFoundStates.clear();
+        return null;
+    }
+
+    public Map<Integer, SolutionSteps> generateIterationStates(Integer numberOfMovements, Map<Integer, Boolean> alreadyFoundStates, AtomicInteger totalAttempts, AtomicInteger currentMovementStates, AtomicInteger knownStates) {
+        Map<Integer, SolutionSteps> storedStates = new HashMap<>();
+        String currentFileName = getFileName(numberOfMovements);
+            /* for each previously generated state, make every possible change to it.
+            Check to see if they're new states.  If they are, add them.
+            If not, don't.*/
+        String priorFileName = getFileName(numberOfMovements - 1);
+        /* read all the strings out of the prior file */
+
+        try (BufferedReader br = new BufferedReader(new FileReader(priorFileName))) {
+            for (String line; (line = br.readLine()) != null; ) {
+                SolutionSteps priorMovementState = MAPPER.readValue(line, SolutionSteps.class);
+                generateAllCubeRotationsFromState(priorMovementState, currentFileName, storedStates, alreadyFoundStates, totalAttempts, currentMovementStates, knownStates);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return storedStates;
     }
@@ -271,7 +290,7 @@ public class TwoCube implements Cube {
     }
 
 
-    public void generateAllCubeRotationsFromState(SolutionSteps priorMovementState, String currentFileName, Map<Integer, SolutionSteps> storedStates, AtomicInteger totalAttempts, AtomicInteger currentMovementStates, AtomicInteger knownStates) {
+    public void generateAllCubeRotationsFromState(SolutionSteps priorMovementState, String currentFileName, Map<Integer, SolutionSteps> storedStates, Map<Integer, Boolean> foundStates, AtomicInteger totalAttempts, AtomicInteger currentMovementStates, AtomicInteger knownStates) {
         List<String> priorMovementSteps = priorMovementState.getSteps();
         Block[][][] priorCubeState = initializeCubeFromDescriptor(priorMovementState.getDescriptor());
         for (Rotation rotation : Rotation.values()) {
@@ -287,8 +306,9 @@ public class TwoCube implements Cube {
                 /* if it's not a known state, save it to both maps */
                 String currentDescriptor = getDescriptor(rotationResult.getBlockArray());
                 int currentDescriptorHashCode = currentDescriptor.hashCode();
-                if (null == storedStates.get(currentDescriptorHashCode)) {
+                if (null == foundStates.get(currentDescriptorHashCode)) {
                     SolutionSteps updatedState = getCurrentState(rotationResult);
+                    foundStates.put(currentDescriptorHashCode, true);
                     storedStates.put(currentDescriptorHashCode, updatedState);
                     appendToFile(currentFileName, updatedState);
                     currentMovementStates.incrementAndGet();
@@ -326,7 +346,10 @@ public class TwoCube implements Cube {
             e.printStackTrace();
         } finally {
             try {
-                output.close();
+                if (null != output) {
+                    output.flush();
+                    output.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -334,10 +357,10 @@ public class TwoCube implements Cube {
         }
     }
 
-    public void writeSolutionsToFile(Map<Integer, SolutionSteps> storedStates, String filename) {
+    public void appendSolutionsToFile(Map<Integer, SolutionSteps> storedStates, String filename) {
         Writer output = null;
         try {
-            output = new BufferedWriter(new FileWriter(WORKING_DIRECTORY + "/" + filename, true));
+            output = new BufferedWriter(new FileWriter(RESOURCE_DIRECTORY + "/" + filename, true));
             for (Map.Entry<Integer, SolutionSteps> step : storedStates.entrySet()) {
                 if (null != step) {
                     String stepValue = MAPPER.writeValueAsString(step);
@@ -354,6 +377,7 @@ public class TwoCube implements Cube {
         } finally {
             try {
                 if (null != output) {
+                    output.flush();
                     output.close();
                 }
             } catch (IOException e) {
@@ -404,7 +428,6 @@ public class TwoCube implements Cube {
     }
 
 
-
     public SolutionSteps readSolutionsFromFile(String filename, String descriptor) {
         AtomicReference<SolutionSteps> steps = new AtomicReference<>(new SolutionSteps());
         TypeReference<Map.Entry<Integer, SolutionSteps>> reference = new TypeReference<Map.Entry<Integer, SolutionSteps>>() {
@@ -427,4 +450,17 @@ public class TwoCube implements Cube {
         }
         return steps.get();
     }
+
+
+//    static final FSTConfiguration conf = FSTConfiguration.createDefaultConfiguration();
+//
+//    static {
+//        conf.registerClass(Color.class, Block.class, BlockFace.class);
+//    }
+//
+//    @Override
+//    public String getDescriptor(Block[][][] blocks) {
+//        String descriptor = new String(conf.asByteArray(blocks));
+//        return descriptor;
+//    }
 }

@@ -3,10 +3,11 @@ package solver;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import solver.model.CubeRotation;
-import solver.types.Color;
+
 import solver.types.Rotation;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ import java.util.Map;
 public interface Cube {
     Block[][][] initializeCube();
 
+
     Integer getSize();
 
     SolutionSteps solve(String solutionFileName, String descriptor);
@@ -24,12 +26,13 @@ public interface Cube {
     Map<Integer, SolutionSteps> generateStates(Integer max);
 
     ObjectMapper MAPPER = new ObjectMapper();
-    String WORKING_DIRECTORY = "src/test/resources/working";
+    String RESOURCE_DIRECTORY = "src/test/resources";
+    String WORKING_DIRECTORY = RESOURCE_DIRECTORY + "/working";
 
 
     default void switchFaceForward(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        Color frontFaceHolder = block.getFront();
+        int frontFaceHolder = block.getFront();
         block.setFront(block.getTop());
         block.setTop(block.getBack());
         block.setBack(block.getBottom());
@@ -39,7 +42,7 @@ public interface Cube {
 
     default void switchFaceBackwards(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        Color frontFaceHolder = block.getFront();
+        int frontFaceHolder = block.getFront();
         block.setFront(block.getBottom());
         block.setBottom(block.getBack());
         block.setBack(block.getTop());
@@ -127,7 +130,7 @@ public interface Cube {
 
     default void switchFaceLeft(Block block) {
         /* change facing: front becomes left, right becomes front,  back becomes right, left becomes back */
-        Color leftBlockFaceHolder = block.getLeft();
+        int leftBlockFaceHolder = block.getLeft();
         block.setLeft(block.getFront());
         block.setFront(block.getRight());
         block.setRight(block.getBack());
@@ -136,7 +139,7 @@ public interface Cube {
 
     default void switchFaceRight(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        Color frontFaceHolder = block.getFront();
+        int frontFaceHolder = block.getFront();
         block.setFront(block.getLeft());
         block.setLeft(block.getBack());
         block.setBack(block.getRight());
@@ -205,7 +208,7 @@ public interface Cube {
 
     default void switchFaceClockwise(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        Color holder = block.getTop();
+        int holder = block.getTop();
         block.setTop(block.getLeft());
         block.setLeft(block.getBottom());
         block.setBottom(block.getRight());
@@ -215,7 +218,7 @@ public interface Cube {
 
     default void switchFaceCounterClockwise(Block block) {
         /* change facing: left becomes front,  back becomes left, right becomes back, front becomes right  */
-        Color holder = block.getTop();
+        int holder = block.getTop();
         block.setTop(block.getRight());
         block.setRight(block.getBottom());
         block.setBottom(block.getLeft());
@@ -309,5 +312,10 @@ public interface Cube {
             e.printStackTrace();
         }
         return blockArray;
+    }
+
+
+    default int hashCode(Block[][][] cube) {
+        return Arrays.deepHashCode(cube);
     }
 }

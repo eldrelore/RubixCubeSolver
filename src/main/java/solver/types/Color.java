@@ -1,56 +1,52 @@
 package solver.types;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public enum Color {
-    DEFAULT(""),
-    RED("r"),
-    BLUE("b"),
-    WHITE("w"),
-    GREEN("g"),
-    YELLOW("y"),
-    ORANGE("o"),
+    DEFAULT(0),
+    RED(1),
+    BLUE(2),
+    WHITE(3),
+    GREEN(4),
+    YELLOW(5),
+    ORANGE(6),
     ;
 
-    public String getName() {
-        return name;
+    private int value;
+
+
+    public int getValue() {
+        return value;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    private void setValue(int value) {
+        this.value = value;
     }
 
-    private String name;
 
-    Color(String name) {
-        this.name = name;
+    Color(int value) {
+        setValue(value);
     }
 
 
     @Override
     public String toString() {
-        return name;
+        return String.valueOf(value);
     }
 
-    private static Map<String, Color> lookup = new HashMap<>();
+    private static Map<Integer, Color> lookup = new HashMap<>();
 
     static {
         for (Color color : Color.values()) {
-            lookup.put(color.getName(), color);
+            lookup.put(color.getValue(), color);
         }
     }
 
     @JsonCreator
-    public static String forValue(String value) {
-        return lookup.get(value).getName();
-    }
-
-    @JsonValue
-    public String toValue() {
-        return name;
+    public static Color forIntValue(Integer value) {
+        return lookup.get(value);
     }
 }

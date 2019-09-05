@@ -6,6 +6,9 @@ import java.util.Objects;
 
 public class SolutionSteps {
     private List<String> steps = new ArrayList<>();
+    private List<String> solutionSteps = new ArrayList<>();
+    private String descriptor;
+
 
     public List<String> getSolutionSteps() {
         return solutionSteps;
@@ -15,7 +18,6 @@ public class SolutionSteps {
         this.solutionSteps = solutionSteps;
     }
 
-    private List<String> solutionSteps = new ArrayList<>();
 
     public String getDescriptor() {
         return descriptor;
@@ -24,8 +26,6 @@ public class SolutionSteps {
     public void setDescriptor(String descriptor) {
         this.descriptor = descriptor;
     }
-
-    private String descriptor;
 
 
     public List<String> getSteps() {

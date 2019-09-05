@@ -16,9 +16,9 @@ public class OneCube implements Cube {
     @Override
     public Block[][][] initializeCube() {
         Block block = new Block(0, 0, 0,
-                new Color[]{Color.BLUE, Color.GREEN,
-                        Color.ORANGE, Color.RED,
-                        Color.YELLOW, Color.WHITE});
+                new int[]{Color.BLUE.getValue(), Color.GREEN.getValue(),
+                        Color.ORANGE.getValue(), Color.RED.getValue(),
+                        Color.YELLOW.getValue(), Color.WHITE.getValue()});
         cube = new Block[1][1][1];
         cube[0][0][0] = block;
         return cube;
