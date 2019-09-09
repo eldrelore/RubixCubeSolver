@@ -1334,7 +1334,7 @@ public class RubixCubeTwoByBlockTest {
 
 
     /* These two are more integration / validation, one generates all the states, the other checks a known state & its solution */
-    @Test
+//    @Test
     public void testGenerateStates() {
         Map<Integer, SolutionSteps> solutions = cube.generateStates(null);
         String solutionFile = TwoCube.RESOURCE_DIRECTORY + "/" + "TwoByTwoCubeSolutions.txt";
